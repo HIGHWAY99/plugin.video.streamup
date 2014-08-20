@@ -1,0 +1,256 @@
+support@streamup.com
+feedback@streamup.com
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+rtmp://66.55.92.79/ccf5beca-7df3-41ae-9836-eaa84fc9c8a1/G6S3ACqvzqFsqguyNHoN
+rtmp://66.55.92.79/91813392-05eb-486c-ba35-588c3d83f194/6xz69ho3twFsdxSTn7LD
+G6S3ACqvzqFsqguyNHoN
+6xz69ho3twFsdxSTn7LD
+rtmp://66.55.92.79/87c209fd-a74d-42a4-917fd30e7ce13ad/unH6pXkdwpwYWSuGkpzL
+rtmp://66.55.92.79/f2a57053-4359-a7d5-168ed39a0b96/fqjdYyyszdVoUuERBUgZ
+
+rtmp://66.55.92.79/c2e4a821-6dd4-455e-9bb0-eb8270cf4bbd/
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+https://streamup.com/
+		https://streamup.com/rooms/thecollectivemixdjs/plugins/video/show?autoplayAudio=false
+		
+		https://d2f6rj4zotxt7y.cloudfront.net/assets/application-9c585b8fd9d34420b82666de2541d3dd.js
+
+https://d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js
+
+https://d2f6rj4zotxt7y.cloudfront.net/assets/StreamupEmbeddable-0b08af98f533bbb3199546d0611aca5f.swf
+
+https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/004/954/regular/thecollectivemixdjs_1407800107.jpg?1407800107
+flashvars.roomAvatar = 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/004/954/regular/thecollectivemixdjs_1407800107.jpg?1407800107';
+
+flashvars.roomId = 'ccf5beca-7df3-41ae-9836-eaa84fc9c8a1';
+flashvars.roomName = 'thecollectivemixdjs';
+flashvars.roomSlug = 'thecollectivemixdjs';
+
+NREUMQ.push(["nrfj","beacon-4.newrelic.com","660b1d041a","2450993","JwlZQ0MKXFUDRh1BCwsLRBhBCUVeD1pBHBINAlJYHhZYVhE=",26,465,new Date().getTime(),"","","","",""]);</script></body>
+
+http://cdn.mxpnl.com/libs/mixpanel-2.2.min.js
+
+## Playable stream url
+rtmp://66.55.92.79/ccf5beca-7df3-41ae-9836-eaa84fc9c8a1/G6S3ACqvzqFsqguyNHoN
+
+
+<a class='js-already-loaded-channel' data-room-id='ccf5beca-7df3-41ae-9836-eaa84fc9c8a1' data-room-slug='thecollectivemixdjs' href='/thecollectivemixdjs'>
+
+www.thegcloud.com
+www.gigenet.com
+
+rtmp://www.thegcloud.com/ccf5beca-7df3-41ae-9836-eaa84fc9c8a1/G6S3ACqvzqFsqguyNHoN #nope, not found
+rtmp://www.gigenet.com/ccf5beca-7df3-41ae-9836-eaa84fc9c8a1/G6S3ACqvzqFsqguyNHoN #nope, not found
+
+https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.en.uja32oLrJbs.O/m=plusone/rt=j/sv=1/d=1/ed=1/am=EQ/rs=AItRSTPRCCSwuwScg4BYuVLGHF2aWnAkiA/cb=gapi.loaded_0
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+https://streamup.com/scifi-and-stuff
+stargate
+## Playable stream url
+rtmp://66.55.92.79/91813392-05eb-486c-ba35-588c3d83f194/6xz69ho3twFsdxSTn7LD
+
+91813392-05eb-486c-ba35-588c3d83f194
+flashvars.roomId = '91813392-05eb-486c-ba35-588c3d83f194';
+<meta content='https://streamup.com/assets/StreamupEmbeddable.swf?autoplayAudio=true&amp;roomId=91813392-05eb-486c-ba35-588c3d83f194&amp;userId=guest&amp;roomName=scifi+and+stuff&amp;roomSlug=scifi-and-stuff' itemprop='embedURL'>
+<meta content='https://streamup.com/assets/StreamupEmbeddable.swf?autoplayAudio=true&amp;roomId=91813392-05eb-486c-ba35-588c3d83f194&amp;userId=guest&amp;roomName=scifi+and+stuff&amp;roomSlug=scifi-and-stuff' property='og:video'>
+<div data-channel-avatar='https%3A%2F%2Fd2f6rj4zotxt7y.cloudfront.net%2Frooms%2Favatars%2F000%2F011%2F044%2Fregular%2Fscifi-and-stuff_1407528717.jpg%3F1407528717' data-channel-name='scifi and stuff' data-is-broadcasting='false' data-public-room='true' data-room-allow-broadcast='false' data-room-auto-share-url='/rooms/scifi-and-stuff/auto_share' data-room-id='91813392-05eb-486c-ba35-588c3d83f194' data-room-slug='scifi-and-stuff' data-room-url='https://streamup.com/scifi-and-stuff' data-room-youtube-playlist-loop='false' data-show-mode='true' data-user-following-room='false' data-user-room-role-in-weight='0' data-welcome-message='sit back relax enjoy the show' data-youtube-mode='false' id='room'></div>
+
+<div data-channel-avatar='https%3A%2F%2Fd2f6rj4zotxt7y.cloudfront.net%2Frooms%2Favatars%2F000%2F011%2F044%2Fregular%2Fscifi-and-stuff_1407528717.jpg%3F1407528717' 
+data-channel-name='scifi and stuff' data-is-broadcasting='false' data-public-room='true' data-room-allow-broadcast='false' 
+data-room-auto-share-url='/rooms/scifi-and-stuff/auto_share' data-room-id='91813392-05eb-486c-ba35-588c3d83f194' 
+data-room-slug='scifi-and-stuff' 
+data-room-url='https://streamup.com/scifi-and-stuff' data-room-youtube-playlist-loop='false' data-show-mode='true' 
+data-user-following-room='false' data-user-room-role-in-weight='0' 
+data-welcome-message='sit back relax enjoy the show' data-youtube-mode='false' id='room'></div>
+
+
+
+## Channel Avatar image
+<meta content='https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/regular/scifi-and-stuff_1407528717.jpg?1407528717' name='twitter:image:src'>
+https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/regular/scifi-and-stuff_1407528717.jpg?1407528717
+<meta content='https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/regular/scifi-and-stuff_1407528717.jpg?1407528717' property='og:image'>
+https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/regular/scifi-and-stuff_1407528717.jpg?1407528717
+<meta content='https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/regular/scifi-and-stuff_1407528717.jpg?1407528717' itemprop='image'>
+<meta content='https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/regular/scifi-and-stuff_1407528717.jpg?1407528717' itemprop='thumbnailUrl'>
+
+## Background image
+<div id='channelBgColor' style="background-image: url('https://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/011/044/original/scifi-and-stuff-background_1403478667.jpg?1403478667');">
+https://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/011/044/original/scifi-and-stuff-background_1403478667.jpg?1403478667
+
+
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+
+https://d2f6rj4zotxt7y.cloudfront.net/assets/application-9c585b8fd9d34420b82666de2541d3dd.js
+
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+rtmp://66.55.92.79/ccf5beca-7df3-41ae-9836-eaa84fc9c8a1/G6S3ACqvzqFsqguyNHoN
+rtmp://66.55.92.79/91813392-05eb-486c-ba35-588c3d83f194/6xz69ho3twFsdxSTn7LD
+G6S3ACqvzqFsqguyNHoN
+6xz69ho3twFsdxSTn7LD
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+
+      public static const roomUUID:String = "46d7c4e3-ed97-4332-bc5f-4e1148db8edc";
+      
+      public static const userUUID:String = "98e4f59d-72da-4e26-be05-16fcff353d73";
+      
+      public static const rtmp:String = "rtmp://66.55.92.79/";
+      
+      public static var userName:String = "Reycogames";
+      
+      public static var roomName:String = "Rey\'s Lounge";
+      
+      public static var roomSlug:String = "reys-lounge";
+
+
+
+
+
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+https://streamup.com/rooms/entertainment.js?_=1408029006030
+https://streamup.com/rooms/social.js?_=1408028888974
+https://streamup.com/rooms/entertainment.js
+popular entertainment gaming music social
+https://streamup.com/rooms/gaming.js?_=1408029006031
+
+#request# GET https://streamup.com/search/stargate
+https://streamup.com/search/stargate
+
+#post
+https://streamup.com/rooms/entertainment?page=5
+
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+https://streamup.com/search/sci%20fi
+https://streamup.com/search/sci%20fi/users.js?_=1408067771294
+
+# default channel image
+https://d2f6rj4zotxt7y.cloudfront.net/assets/rooms/avatar_default_gray_cinematic-19e9b93cf631768f18e4f9c5b09d9a9b.png
+# default user avatar
+https://d2f6rj4zotxt7y.cloudfront.net/assets/users/large_at_2x_missing-34fcdd6f1e517be4003a5ef5d204a651.png
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+https://streamup.com/rooms.js
+
+<div class='homeChannelsFeatured-2' data-roomSlug='liaoalan1' style='display: none;'>
+<div id='homeChannelsFeaturedTextLabel'>Featured</div>
+<h2 id='homeChannelsFeaturedTextChannelName'><a href="/liaoalan1">liaoalan1</a></h2>
+<div><a class="btnSmall" href="/liaoalan1">Join Channel</a></div>
+</div>
+
+https://s-static.ak.facebook.com/connect/xd_arbiter/FX-Xf5fQjUk.js?version=41#cb=f2269e2e78d8f78&domain=streamup.com&origin=https%3A%2F%2Fstreamup.com%2Ffc65d2fcb00976&relation=parent&error=unknown_user
+
+https://s-static.ak.facebook.com/connect/xd_arbiter/FX-Xf5fQjUk.js
+?version=41
+#cb=f2269e2e78d8f78
+&domain=streamup.com
+&origin=https%3A%2F%2Fstreamup.com%2Ffc65d2fcb00976
+&relation=parent
+&error=unknown_user
+
+<iframe id='su-ivp' src='https://streamup.com/rooms/scifi-and-stuff/plugins/video/show?autoplayAudio=true' scrolling='no' frameborder='0' marginwidth='0' marginheight='0' allowTransparency='true' seamless style='border: none; overflow: hidden; width: 640px; height: 360px;' width='640px' height='360px'></iframe>
+
+https://streamup.com/rooms/scifi-and-stuff/plugins/video/show?autoplayAudio=true
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+POST /rooms/popular?page=2 already_loaded_rooms%5B%5D=df3ca364-65c4-4407-a23d-79ae015091e8&already_loaded_rooms%5B%5D=91813392-05eb-486c-ba35-588c3d83f194&already_loaded_rooms%5B%5D=7dd1d7f5-5d55-47ed-9471-e61796a8401b&already_loaded_rooms%5B%5D=624977aa-f60c-40e3-bcd2-08bd75c34ad4&already_loaded_rooms%5B%5D=86f8e2da-e8d7-4468-bfef-9927e8f22bca&already_loaded_rooms%5B%5D=f2a57053-5961-4359-a7d5-168ed39a0b96&already_loaded_rooms%5B%5D=1e8ebe32-00b0-4781-82a8-465fc9baee14&already_loaded_rooms%5B%5D=6f36d8c3-6773-48d7-9ce6-fae3eb86ae0d&already_loaded_rooms%5B%5D=f3df0745-71c3-423a-bdd0-4f5eabaab377&already_loaded_rooms%5B%5D=c2e4a821-6dd4-455e-9bb0-eb8270cf4bbd&already_loaded_rooms%5B%5D=525b83ee-1433-4f6d-be06-63828385e741&already_loaded_rooms%5B%5D=d9095e8a-d7bb-4014-aff5-b57c6907904e
+
+/rooms/popular?page=2
+ already_loaded_rooms%5B%5D=df3ca364-65c4-4407-a23d-79ae015091e8
+&already_loaded_rooms%5B%5D=91813392-05eb-486c-ba35-588c3d83f194
+&already_loaded_rooms%5B%5D=7dd1d7f5-5d55-47ed-9471-e61796a8401b
+&already_loaded_rooms%5B%5D=624977aa-f60c-40e3-bcd2-08bd75c34ad4
+&already_loaded_rooms%5B%5D=86f8e2da-e8d7-4468-bfef-9927e8f22bca
+&already_loaded_rooms%5B%5D=f2a57053-5961-4359-a7d5-168ed39a0b96
+&already_loaded_rooms%5B%5D=1e8ebe32-00b0-4781-82a8-465fc9baee14
+&already_loaded_rooms%5B%5D=6f36d8c3-6773-48d7-9ce6-fae3eb86ae0d
+&already_loaded_rooms%5B%5D=f3df0745-71c3-423a-bdd0-4f5eabaab377
+&already_loaded_rooms%5B%5D=c2e4a821-6dd4-455e-9bb0-eb8270cf4bbd
+&already_loaded_rooms%5B%5D=525b83ee-1433-4f6d-be06-63828385e741
+&already_loaded_rooms%5B%5D=d9095e8a-d7bb-4014-aff5-b57c6907904e
+
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+http://66.55.92.79:1935/
+Wowza Streaming Engine 4 Monthly Edition 4.0.6 build12199
+
+http://66.55.92.79:1139/
+
+https://streamup.com/assets/StreamupEmbeddable.swf?autoplayAudio=true&amp;roomId=91813392-05eb-486c-ba35-588c3d83f194&amp;userId=guest&amp;roomName=scifi+and+stuff&amp;roomSlug=scifi-and-stuff
+
+http://xx.xx.xx.xx:1935/live/myStream/playlist.m3u8
+
+http://66.55.92.79:1935/live/91813392-05eb-486c-ba35-588c3d83f194/playlist.m3u8
+
+http://66.55.92.79:8088/enginemanager/
+
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/cinematic/scifi-and-stuff_1407528717.jpg?1407528717
+['pars', {'roomslug': 'scifi-and-stuff', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/cinematic/scifi-and-stuff_1407528717.jpg?1407528717', 'title': 'scifi and stuff', 'url': '/scifi-and-stuff', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '91813392-05eb-486c-ba35-588c3d83f194'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]scifi and stuff[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/116/cinematic/papounetv_1407665170.jpg?1407665170
+['pars', {'roomslug': 'papounetv', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/116/cinematic/papounetv_1407665170.jpg?1407665170', 'title': 'papounetv', 'url': '/papounetv', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '624977aa-f60c-40e3-bcd2-08bd75c34ad4'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]papounetv[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/846/cinematic/wikids-sci-fi-network_1407994668.jpg?1407994668
+['pars', {'roomslug': 'wikids-sci-fi-network', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/846/cinematic/wikids-sci-fi-network_1407994668.jpg?1407994668', 'title': 'wikids sci-fi network', 'url': '/wikids-sci-fi-network', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'a39f295f-5d51-4ecc-a7a9-976753f54594'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]wikids sci-fi network[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/009/315/cinematic/darkside_1407997218.png?1407997218
+['pars', {'roomslug': 'darkside', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/009/315/cinematic/darkside_1407997218.png?1407997218', 'title': 'Darkside', 'url': '/Darkside', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'f3df0745-71c3-423a-bdd0-4f5eabaab377'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]Darkside[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/008/879/cinematic/nextcutent-radio_1408290063.jpg?1408290063
+['pars', {'roomslug': 'nextcutent-radio', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/008/879/cinematic/nextcutent-radio_1408290063.jpg?1408290063', 'title': 'NEXTCUTENT RADIO', 'url': '/NEXTCUTENT-RADIO', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '1e8ebe32-00b0-4781-82a8-465fc9baee14'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]NEXTCUTENT RADIO[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/272/cinematic/themovies_1407471569.jpg?1407471569
+['pars', {'roomslug': 'themovies', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/272/cinematic/themovies_1407471569.jpg?1407471569', 'title': 'TheMovies', 'url': '/TheMovies', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '228880f4-ee9b-4b18-b479-ac178455d638'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]TheMovies[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/004/954/cinematic/thecollectivemixdjs_1408219795.jpg?1408219795
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'thecollectivemixdjs', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': 'thecollectivemixdjs', 'url': '/thecollectivemixdjs', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'ccf5beca-7df3-41ae-9836-eaa84fc9c8a1'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]thecollectivemixdjs[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/946/cinematic/ufo-tv_1408149520.jpg?1408149520
+['pars', {'roomslug': 'ufo-tv', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/946/cinematic/ufo-tv_1408149520.jpg?1408149520', 'title': 'UFO TV', 'url': '/UFO-TV', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '6f36d8c3-6773-48d7-9ce6-fae3eb86ae0d'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]UFO TV[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/534/cinematic/deep-ellum-on-air_1408058117.jpg?1408058117
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'deep-ellum-on-air', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': 'Deep Ellum On Air', 'url': '/Deep-Ellum-On-Air', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '5a7f1a18-8106-4f3e-b3bf-7be7467086de'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]Deep Ellum On Air[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/000/cinematic/freeflix-britcoms_1407964227.jpg?1407964227
+['pars', {'roomslug': 'freeflix-britcoms', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/000/cinematic/freeflix-britcoms_1407964227.jpg?1407964227', 'title': 'FreeFlix - Britcoms', 'url': '/FreeFlix-Britcoms', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '40e95b70-3cce-439b-ac63-77159c36097d'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]FreeFlix - Britcoms[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/045/cinematic/comedyzone_1407636278.jpg?1407636278
+['pars', {'roomslug': 'comedyzone', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/045/cinematic/comedyzone_1407636278.jpg?1407636278', 'title': 'ComedyZone', 'url': '/ComedyZone', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '716cdf03-6e37-4157-b1ed-1c87bc573d6a'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]ComedyZone[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/374/cinematic/the-object-shop_1408400511.jpg?1408400511
+['pars', {'roomslug': 'the-object-shop', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/374/cinematic/the-object-shop_1408400511.jpg?1408400511', 'title': 'The Object Shop', 'url': '/The-Object-Shop', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '62935b4e-fc44-4720-a174-65ca294042c6'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]The Object Shop[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+
+
+
+
+
+
+
+
+
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
