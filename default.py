@@ -241,6 +241,15 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		if len(roomId)==0:
 			try:    roomId=re.compile("flashvars.roomId\s*=\s*'(.+?)';").findall(html)[0]
 			except: roomId=''
+		if len(Thumb)==0:
+			try:    Thumb=re.compile("flashvars.roomAvatar\s*=\s*'(.+?)';").findall(html)[0]
+			except: Thumb=iconSite
+		if len(roomSlug)==0:
+			try:    roomSlug=re.compile("flashvars.roomSlug\s*=\s*'(.+?)';").findall(html)[0]
+			except: roomSlug=''
+		if len(Name)==0:
+			try:    Name=re.compile("flashvars.roomName\s*=\s*'(.+?)';").findall(html)[0]
+			except: Name='Unknown'
 		
 		
 		
@@ -272,13 +281,16 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	#try: play.play(url)
 	#except: t=''
 	## ### ## 
-	infoLabels={"Studio":liVe,"ShowTitle":Name,"Title":Name,"cover_url":Thumb,'plot':plot}
-	li=xbmcgui.ListItem(Name,iconImage=Thumb,thumbnailImage=Thumb)
-	li.setInfo(type="Video", infoLabels=infoLabels ); li.setProperty('IsPlayable', 'true')
+	deb('stream url',str(url)); 
+	infoLabels={"Studio":liVe,"ShowTitle":Name,"Title":Name,"cover_url":Thumb,'plot':plot}; 
+	li=xbmcgui.ListItem(Name,iconImage=Thumb,thumbnailImage=Thumb); 
+	li.setInfo(type="Video", infoLabels=infoLabels ); li.setProperty('IsPlayable', 'true'); 
 	try: _addon.resolve_url(url)
 	except: t=''
 	try: play.play(url, li)
-	except: t=''
+	except:
+		try: play.play(url)
+		except: t=''
 	### ### ## 
 
 def ListShows(Url,Page='',TyPE='js',idList='[]'):
@@ -290,7 +302,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 	if len(Url)==0: return
 	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): Url=mainSite+Url
 	deb('Url',Url); 
-	if (page==1) or (len(Page)==0): html=messupText(nolines(nURL(Url)),True,True); 
+	if (page==1) or (len(Page)==0): html=messupText(nolines(nURL(Url)),True,True); IdsList=[]
 	else: 
 		##Url=Url.replace('http://','https://'); 
 		IdsList=eval(idList); IdLa=0; iLISTd=''; 
@@ -302,7 +314,10 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 		#	#iLISTd+=""+"already_loaded_rooms[]="+IdL+"&"
 		#	#iLISTd+=""+"already_loaded_rooms%5B%5D="+IdL+"&"
 		##html=nURL(Url,method='post',form_data={'page':str(page)},headers={'Referer':Url})
-		html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
+		html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		html=messupText(nolines(html),True,True); 
 	deb('length of html',str(len(html))); #debob(html); 
 	if len(html)==0: return
@@ -323,7 +338,8 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 	elif TyPE=='html|user':
 		s="<a href='(.+?)'><div class='homePerson(?: homePerson\d+)?'><div class='(homePerson(?:Username|Text)?)'>(.*?)</div><div class='(homePerson(?:Username|Text)?)'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></div></a'; 
 	else: return
-	html=html.replace('</a>','</a\n>'); ListOfIds=[]
+	html=html.replace('</a>','</a\n>'); ListOfIds=[]; 
+	ListOfIds=IdsList
 	debob(html); 
 	try: matches=re.compile(s).findall(html); deb('# of matches found',str(len(matches))); debob(matches)
 	except: matches=''; 
@@ -358,7 +374,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 				#(homeChannel(?:Live|Title|Text)?)
 			#debob(['url',url,'name',name,'img',img])
 			#(url,name)=(match[2],match[1])
-			ListOfIds.append(roomId)
+			ListOfIds.append(roomId); #IdsList.append(roomId); 
 			#name=name.replace('<span class="epnum">',' (').replace('</span>',')')
 			
 			#img=iconSite; #img=FixImage(img); 
@@ -470,8 +486,10 @@ def SpecialMenu(url):
 	##
 def DevFeaturedMenu():
 	data=[]; 
-	data.append(['pars', {'streamurl': 'rtmp://66.55.92.79/91813392-05eb-486c-ba35-588c3d83f194/6xz69ho3twFsdxSTn7LD', 'roomslug': 'scifi-and-stuff', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/cinematic/scifi-and-stuff_1407528717.jpg?1407528717', 'title': 'scifi and stuff', 'url': '/scifi-and-stuff', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '91813392-05eb-486c-ba35-588c3d83f194'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]scifi and stuff[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}])
-	#data.append(['pars', {'streamurl': '', 'roomslug': 'wikids-sci-fi-network', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/846/cinematic/wikids-sci-fi-network_1407994668.jpg?1407994668', 'title': 'wikids sci-fi network', 'url': '/wikids-sci-fi-network', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'a39f295f-5d51-4ecc-a7a9-976753f54594'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]wikids sci-fi network[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}])
+	data.append(['pars', {'streamurl': 'rtmp://66.55.92.79/91813392-05eb-486c-ba35-588c3d83f194/6xz69ho3twFsdxSTn7LD', 'roomslug': 'scifi-and-stuff', 'site': '', 'imdb_id': '', 'fimg': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/011/044/original/scifi-and-stuff-background_1403478667.jpg?1403478667', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/044/cinematic/scifi-and-stuff_1407528717.jpg?1407528717', 'title': 'scifi and stuff', 'url': '/scifi-and-stuff', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '91813392-05eb-486c-ba35-588c3d83f194'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]scifi and stuff[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}])
+	data.append(['pars', {'streamurl': 'rtmp://66.55.92.79/a39f295f-5d51-4ecc-a7a9-976753f54594/ryhNcYybmfogwszSuNKH', 'roomslug': 'wikids-sci-fi-network', 'site': '', 'imdb_id': '', 'fimg': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/011/846/original/wikids-sci-fi-network-background_1406776905.jpg?1406776905', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/011/846/cinematic/wikids-sci-fi-network_1407994668.jpg?1407994668', 'title': 'wikids sci-fi network', 'url': '/wikids-sci-fi-network', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'a39f295f-5d51-4ecc-a7a9-976753f54594'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]wikids sci-fi network[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}])
+	data.append(['pars', {'streamurl': 'rtmp://66.55.92.79/c7bedc20-0bfe-4c25-bcfc-87724433a0d2/veHUPayVdZwrAFw4dnFU', 'roomslug': 'liaoalan1', 'site': '', 'imdb_id': '', 'fimg': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/014/794/original/liaoalan1-background_1407508549.jpg?1407508549', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/794/cinematic/liaoalan1_1407507250.jpg?1407507250', 'title': 'liaoalan1', 'url': '/liaoalan1', 'type': 'html', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'c7bedc20-0bfe-4c25-bcfc-87724433a0d2'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]liaoalan1[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}])
+	#data.append()
 	#data.append()
 	#data.append()
 	#data.append()
@@ -496,14 +514,18 @@ def BrowseMenu():
 def SectionMenu():
 	#import splash_highway as splash; #splash.do_My_Splash(_addon.get_fanart(),2,False); 
 	#splash.do_My_Splash(HowLong=5,resize=False); 
+	SpecialCODE=addst('special-code',''); 
 	_addon.add_directory({'mode':'BrowseMenu','site':site},{'title':AFColoring('Browse')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
 	_addon.add_directory({'mode':'SpecialMenu','url':'http://raw.github.com/HIGHWAY99/plugin.video.streamup/master/lists/DevsFeaturedList.txt','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
+	if SpecialCODE==ps('special-code'):
+		_addon.add_directory({'mode':'DevFeaturedMenu','site':site},{'title':AFColoring("Dev's Featured List[CR][Hard Coded]")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
+	
 	_addon.add_directory({'mode':'BrowseCat2','site':site,'cat':'rooms','type':'js|featured'},{'title':AFColoring('Featured')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
-	#_addon.add_directory({'mode':'DevFeaturedMenu','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
 	_addon.add_directory({'mode':'Search','site':site,'url':'/search/'},{'title':AFColoring('Search')+cFL(' Channel',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search'))
 	_addon.add_directory({'mode':'Search','site':site,'url':'/search/_s_/users.js'},{'title':AFColoring('Search')+cFL(' People',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search user'))
 	#
-	_addon.add_directory({'mode':'FavoritesList','site':site,'section':section             },{'title':cFL(ps('WhatRFavsCalled'),colorA)+cFL(addst('fav.tv.1.name'),colorB)},fanart=fanartSite,img=psgn('favorites 1'))
+	#if SpecialCODE==ps('special-code'):
+	#_addon.add_directory({'mode':'FavoritesList','site':site,'section':section             },{'title':cFL(ps('WhatRFavsCalled'),colorA)+cFL(addst('fav.tv.1.name'),colorB)},fanart=fanartSite,img=psgn('favorites 1'))
 	#_addon.add_directory({'mode':'FavoritesList','site':site,'section':section,'subfav':'2'},{'title':cFL(ps('WhatRFavsCalled'),colorA)+cFL(addst('fav.tv.2.name'),colorB)},fanart=fanartSite,img=psgn('favorites 2'))
 	#_addon.add_directory({'mode':'FavoritesList','site':site,'section':section,'subfav':'3'},{'title':cFL(ps('WhatRFavsCalled'),colorA)+cFL(addst('fav.tv.3.name'),colorB)},fanart=fanartSite,img=psgn('favorites 3'))
 	#_addon.add_directory({'mode':'FavoritesList','site':site,'section':section,'subfav':'4'},{'title':cFL(ps('WhatRFavsCalled'),colorA)+cFL(addst('fav.tv.4.name'),colorB)},fanart=fanartSite,img=psgn('favorites 4'))

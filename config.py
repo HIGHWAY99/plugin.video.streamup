@@ -28,6 +28,7 @@ def ps(x):
 			,'__authors__': 				"[COLOR white]The[COLOR tan]Highway[/COLOR][/COLOR]"
 			,'__credits__': 				""
 			,'_domain_url': 				""
+			,'special-code': 				"XBMCHUB"
 			,'word': 								""
 			,'word0': 							""
 			,'word1': 							""
