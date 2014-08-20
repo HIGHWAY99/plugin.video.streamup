@@ -225,7 +225,7 @@ def psgn(x,t=".png"):
 		#return ''
 ### ############################################################################################################
 ### ############################################################################################################
-def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl=''):
+def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey=''):
 	debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); 
 	PlayerMethod=addst("core-player")
 	if   (PlayerMethod=='DVDPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_DVDPLAYER
@@ -238,8 +238,15 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		url=streamUrl
 	else: 
 		html=messupText(nolines(nURL(pageUrl)),True,True); 
+		if len(roomId)==0:
+			try:    roomId=re.compile("flashvars.roomId\s*=\s*'(.+?)';").findall(html)[0]
+			except: roomId=''
 		
-		url='rtmp://%s/%s%s' % ('66.55.92.79/app',roomId,'.flv')
+		
+		
+		url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
+		
+		#url='rtmp://%s/%s%s' % ('66.55.92.79/app',roomId,'.flv')
 		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/app',roomId,'.flv')
 		#url='rtmp://%s playpath=%s%s' % ('66.55.92.79:1935/'+roomSlug,roomId,'')
 		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/'+roomSlug,roomId,'')
@@ -304,6 +311,8 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
 	elif TyPE=='js':
 		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
+	elif TyPE=='js|featured':
+		s="<div class='homeChannelsFeatured-\d+' data-roomSlug='(.*?)'><div id='(homeChannelsFeaturedTextLabel)'>(Featured)</div><h2 id='(homeChannelsFeaturedTextChannelName)'>"+'<a href="(.+?)">(.+?)</a'; 
 	elif TyPE=='html':
 		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
 		#s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'><div class='homeChannelText'>(.*?)</div>"+"(?:<div class='homeChannelLive'>(.*?)</div>)?"+"<div class='homeChannelTitle'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
@@ -325,14 +334,22 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 			labs={}; cMI=[]; genres=''; Genres2=""; is_folder=False; 
 			if TyPE=='html|user':
 				#(url,name,img,liVe,plot,roomId,roomSlug)=(match[0],match[2],match[4],'',match[1],'',''); is_folder=True; 
-				na=1; nnn=[[na,na+1],[na+2,na+3]]; (name,liVe,plot)=('','',''); is_folder=True; (roomId,roomSlug)=('',''); (url,img)=(match[0],match[6]); 
+				na=1; nnn=[[na,na+1],[na+2,na+3]]; (name,liVe,plot)=('','',''); is_folder=True; (roomId,roomSlug)=('',''); (url,img)=(match[0],match[6].replace('https://','http://')); 
 				for (nb,nc) in nnn:
 					if (len(name)==0) and (match[nb]=='homePersonUsername') and (len(match[nc]) > 0): name=match[nc]
 					if (len(plot)==0) and (match[nb]=='homePersonText') and (len(match[nc]) > 0): plot=match[nc]
 				#debob(['url',url,'name',name,'img',img,'plot',plot])
+			elif TyPE=='js|featured':
+				#s="<div class='homeChannelsFeatured-\d+' data-roomSlug='(.*?)'><div id='(homeChannelsFeaturedTextLabel)'>(Featured)</div><h2 id='(homeChannelsFeaturedTextChannelName)'>"+'<a href="(.+?)">(.+?)</a></h2>'; 
+				na=1; nnn=[[na,na+1],[na+2,na+3]]; (name,liVe,plot)=(match[5],match[2],''); is_folder=True; 
+				(roomId,roomSlug)=('',match[0]); (url,img)=(match[4],artp('default_channel')); 
+				#for (nb,nc) in nnn:
+				#	if (len(name)==0) and (match[nb]=='homePersonUsername') and (len(match[nc]) > 0): name=match[nc]
+				#	if (len(plot)==0) and (match[nb]=='homePersonText') and (len(match[nc]) > 0): plot=match[nc]
+				#debob(['url',url,'name',name,'img',img,'plot',plot])
 			else:
 				#(url,name,img,liVe,plot,roomId,roomSlug)=(match[2],match[5],match[8],match[4],match[3],match[0],match[1]); 
-				na=3; nnn=[[na,na+1],[na+2,na+3],[na+4,na+5]]; (name,liVe,plot)=('','',''); (roomId,roomSlug,url,img)=(match[0],match[1],match[2],match[11]); 
+				na=3; nnn=[[na,na+1],[na+2,na+3],[na+4,na+5]]; (name,liVe,plot)=('','',''); (roomId,roomSlug,url,img)=(match[0],match[1],match[2],match[11].replace('https://','http://')); 
 				for (nb,nc) in nnn:
 					if (len(name)==0) and (match[nb]=='homeChannelTitle') and (len(match[nc]) > 0): name=match[nc]
 					if (len(liVe)==0) and (match[nb]=='homeChannelLive') and (len(match[nc]) > 0): liVe=match[nc]
@@ -365,7 +382,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 			try: _addon.add_directory(pars,labs,is_folder=is_folder,fanart=fimg,img=img,contextmenu_items=cMI,total_items=iC,context_replace=False)
 			except: pass
 	NextPage=str(int(page)+1); 
-	if ("page="+NextPage) in html:
+	if (("page="+NextPage) in html) and (not TyPE=='js|featured'):
 		_addon.add_directory({'mode':'ListShows','site':site,'url':Url,'page':NextPage,'type':str(TyPE),'idlist':str(ListOfIds)},{'title':cFL('>> Next %s' % cFL(NextPage,colorA),colorB)},is_folder=True,fanart=fanartSite,img=psgn('next'))
 	set_view('tvshows',view_mode=addst('tvshows-view')); eod()
 
@@ -438,12 +455,14 @@ def DoSearch(title='',Url='/search/'):
 	ListShows( doUrl ,'','html'  ); 
 	##
 def SpecialMenu(url):
-	try: html=nURL(url); data=eval(html)
+	try: html=nURL(url).replace('\n','').replace('\r','').replace('\a','').replace('\t',''); data=eval(html)
 	except: data=[]
 	iC=len(data); 
 	if iC > 0:
 		for (tag1,pars,tag2,labs) in data:
-			img=pars['img']; fimg=pars['fimg']; #debob(['pars',pars,'labs',labs]); 
+			img=pars['img'].replace('https://','http://'); fimg=pars['fimg'].replace('https://','http://'); 
+			if fimg.lower()=='[fanart]': fimg=fanartSite
+			debob(['pars',pars,'labs',labs]); 
 			try: _addon.add_directory(pars,labs,is_folder=False,fanart=fimg,img=img,total_items=iC,context_replace=False)
 			except: pass
 	#set_view('list',view_mode=addst('default-view')); eod()
@@ -479,6 +498,7 @@ def SectionMenu():
 	#splash.do_My_Splash(HowLong=5,resize=False); 
 	_addon.add_directory({'mode':'BrowseMenu','site':site},{'title':AFColoring('Browse')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
 	_addon.add_directory({'mode':'SpecialMenu','url':'http://raw.github.com/HIGHWAY99/plugin.video.streamup/master/lists/DevsFeaturedList.txt','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
+	_addon.add_directory({'mode':'BrowseCat2','site':site,'cat':'rooms','type':'js|featured'},{'title':AFColoring('Featured')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
 	#_addon.add_directory({'mode':'DevFeaturedMenu','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
 	_addon.add_directory({'mode':'Search','site':site,'url':'/search/'},{'title':AFColoring('Search')+cFL(' Channel',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search'))
 	_addon.add_directory({'mode':'Search','site':site,'url':'/search/_s_/users.js'},{'title':AFColoring('Search')+cFL(' People',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search user'))
@@ -514,8 +534,9 @@ def mode_subcheck(mode='',site='',section='',url=''):
 	elif (mode=='BrowseMenu'): 					BrowseMenu()
 	elif (mode=='ListShows'): 		ListShows(url,addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='BrowseCat'): 		ListShows("http://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
+	elif (mode=='BrowseCat2'): 		ListShows("http://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='Search'):				DoSearch(addpr('title',''),url)
-	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('subfav','title'),addpr('subfav','img'),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''))
+	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('subfav','title'),addpr('subfav','img'),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''))
 	#
 	elif (mode=='FavoritesList'): Fav_List(site=site,section=section,subfav=addpr('subfav',''))
 	elif (mode=='About'): 				eod(); About()
