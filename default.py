@@ -12,6 +12,7 @@ import os,sys,string,StringIO,logging,random,array,time,datetime,re
 try: import copy
 except: pass
 import urllib,urllib2,xbmcaddon,xbmcplugin,xbmcgui
+import common as common
 from common import *
 from common import (_addon,_artIcon,_artFanart,_addonPath)
 ### ############################################################################################################
@@ -314,13 +315,16 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 		#	#iLISTd+=""+"already_loaded_rooms[]="+IdL+"&"
 		#	#iLISTd+=""+"already_loaded_rooms%5B%5D="+IdL+"&"
 		##html=nURL(Url,method='post',form_data={'page':str(page)},headers={'Referer':Url})
-		#html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
-		html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
-		#html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
-		#html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
+		##html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms%5B%5D':str(idList)},headers={'Referer':Url})
+		html=nURL(Url+"?page="+str(page),method='post',form_data={'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
+		##html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		html=messupText(nolines(html),True,True); 
 	deb('length of html',str(len(html))); #debob(html); 
-	if len(html)==0: return
+	if len(html)==0: eod(); return
+	if "<title>Offline for Maintenance</title>" in html: debob("Offline for Maintenance"); eod(); return
 	html=html.replace('\\n','').replace('\n','').replace('\r','').replace('\a','').replace('\t','').replace("\\'","'").replace('\\"','"').replace('\\/','/')
 	if TyPE=='xml':
 		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
@@ -389,7 +393,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 			if len(liVe) > 0: labs[u'title']=cFL(name+cFL(" ["+cFL(liVe,colorC)+"]",colorB),colorA); 
 			else: labs[u'title']=cFL(name,colorA); 
 			#plot+=CR+"Genres:  [COLOR purple]"+Genres2+"[/COLOR]"; #plot+="[CR]Year: [COLOR purple]"+year+"[/COLOR]"; #plot+="[CR]Status: [COLOR purple]"+status+"[/COLOR]"; #plot+="[CR]Number of Episodes: [COLOR purple]"+NoEps+"[/COLOR]"; 
-			pars={'mode':'PlayStreamUP','url':url,'title':name,'type':TyPE,'live':liVe,'roomid':roomId,'roomslug':roomSlug,'imdb_id':'','img':img,'fimg':fimg,'site':site,'section':section}; 
+			pars={'roomid':roomId,'roomslug':roomSlug,'url':url,'title':name,'fimg':fimg,'type':TyPE,'live':liVe,'imdb_id':'','img':img,'mode':'PlayStreamUP','site':site,'section':section}; 
 			if TyPE=='html|user': pars['mode']='ListShows'; pars['page']=''; pars['type']='html'; 
 			Clabs={'title':name,'year':'','url':url,'commonid':'','img':img,'fanart':fimg,'plot':labs[u'plot'],'todoparams':_addon.build_plugin_url(pars),'site':site,'section':section}; 
 			try: cMI=ContextMenu_Series(Clabs); 
@@ -471,7 +475,10 @@ def DoSearch(title='',Url='/search/'):
 	ListShows( doUrl ,'','html'  ); 
 	##
 def SpecialMenu(url):
-	try: html=nURL(url).replace('\n','').replace('\r','').replace('\a','').replace('\t',''); data=eval(html)
+	try: 
+		if not '://' in url: html=common._OpenFile(TPapp(url))
+		else: html=nURL(url)
+		html=html.replace('\n','').replace('\r','').replace('\a','').replace('\t',''); data=eval(html); 
 	except: data=[]
 	iC=len(data); 
 	if iC > 0:
@@ -514,9 +521,20 @@ def BrowseMenu():
 def SectionMenu():
 	#import splash_highway as splash; #splash.do_My_Splash(_addon.get_fanart(),2,False); 
 	#splash.do_My_Splash(HowLong=5,resize=False); 
-	SpecialCODE=addst('special-code',''); 
+	SpecialCODE=addst('special-code',''); LocalLists=[]; 
 	_addon.add_directory({'mode':'BrowseMenu','site':site},{'title':AFColoring('Browse')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
 	_addon.add_directory({'mode':'SpecialMenu','url':'http://raw.github.com/HIGHWAY99/plugin.video.streamup/master/lists/DevsFeaturedList.txt','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
+	
+	LocalLists.append(['MyPicksList.txt','My Picks List','browse'])
+	LocalLists.append(['LocalList.txt','Local List','browse'])
+	#LocalLists.append(['','','browse'])
+	for (urlA,TiTLE,iMg) in LocalLists:
+		urlB=TPapp(urlA)
+		if isFile(urlB)==True:
+			html=common._OpenFile(urlB)
+			if len(html) > 10:
+				_addon.add_directory({'mode':'SpecialMenu','url':urlA,'site':site},{'title':AFColoring(TiTLE)},is_folder=True,fanart=fanartSite,img=psgn(iMg))
+	
 	if SpecialCODE==ps('special-code'):
 		_addon.add_directory({'mode':'DevFeaturedMenu','site':site},{'title':AFColoring("Dev's Featured List[CR][Hard Coded]")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
 	

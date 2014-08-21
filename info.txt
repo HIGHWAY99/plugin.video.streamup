@@ -10,6 +10,19 @@ rtmp://66.55.92.79/87c209fd-a74d-42a4-917fd30e7ce13ad/unH6pXkdwpwYWSuGkpzL
 rtmp://66.55.92.79/f2a57053-4359-a7d5-168ed39a0b96/fqjdYyyszdVoUuERBUgZ
 
 rtmp://66.55.92.79/c2e4a821-6dd4-455e-9bb0-eb8270cf4bbd/
+
+rtmp://66.55.92.79/1b39c725-adfb-4812-a3b8-2bce97735445/Pwkejv65jZ1SyLmsHRB1 ## 
+rtmp://66.55.92.79/8b473b58-fcd0-4002-bfea-0f5c4823b77d/2yQG23TMp4q1Nn3QbopG ## 99fm internet radio live cam
+rtmp://66.55.92.79/a39f295f-5d51-4ecc-a7a9-976753f54594/ryhNcYybmfogwszSuNKH ## wikids sci-fi network
+rtmp://66.55.92.79/c7bedc20-0bfe-4c25-bcfc-87724433a0d2/veHUPayVdZwrAFw4dnFU ## liaoalan1 - Live Video Channel
+rtmp://66.55.92.79/228880f4-ee9b-4b18-b479-ac178455d638 ## TheMovies ## youtube
+https://r17---sn-p5qlsn7e.googlevideo.com/videoplayback?c=web&clen=528723429&cpn=U1WgFcGPRHqLdLbj&cver=as3&dur=6356.977&expire=1408587755&fexp=901089%2C902408%2C906369%2C908568%2C924617%2C927622%2C927896%2C931983%2C934024%2C934030%2C936107%2C941566%2C946013%2C953000&gir=yes&id=o-AEFUnD06urvS6eHuO5KIXGv1CU52w8JDde84nYbMbdt8&initcwndbps=725000&ip=199.0.197.160&ipbits=0&itag=135&keepalive=yes&key=yt5&lmt=1398481081294590&mm=31&ms=au&mt=1408566106&mv=m&mws=yes&range=525250560-527359999&ratebypass=yes&requiressl=yes&signature=B9FF6698F5B6390DC5FCB94BCDD8DE3662D7AC57.7529C7A261C20635E44B0997FA1A94720E5FCDBB&source=youtube&sparams=clen%2Cdur%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Crequiressl%2Csource%2Cupn%2Cexpire&sver=3&upn=nl8DKBKCKiw
+rtmp://66.55.92.79/d69fffd3-336f-4e1f-a096-6ee4607bf8ac/maZLQS4sYbDoY4qpgkNx ## gfqlive
+rtmp://66.55.92.79/
+rtmp://66.55.92.79/
+rtmp://66.55.92.79/
+rtmp://66.55.92.79/
+
 ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
 https://streamup.com/
 		https://streamup.com/rooms/thecollectivemixdjs/plugins/video/show?autoplayAudio=false
@@ -225,12 +238,179 @@ img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/015/045/cinematic/
 img:  https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/374/cinematic/the-object-shop_1408400511.jpg?1408400511
 ['pars', {'roomslug': 'the-object-shop', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/374/cinematic/the-object-shop_1408400511.jpg?1408400511', 'title': 'The Object Shop', 'url': '/The-Object-Shop', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '62935b4e-fc44-4720-a174-65ca294042c6'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]The Object Shop[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
 
+['pars', {'roomslug': 'liaoalan1', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'https://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/794/cinematic/liaoalan1_1407507250.jpg?1407507250', 'title': 'liaoalan1', 'url': '/liaoalan1', 'type': 'html', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'c7bedc20-0bfe-4c25-bcfc-87724433a0d2'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]liaoalan1[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/466/cinematic/krow_1408483789.png?1408483789
+['pars', {'roomslug': 'krow', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/466/cinematic/krow_1408483789.png?1408483789', 'title': 'KRoW', 'url': '/KRoW', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '7ee98689-7aa0-45c1-a9b1-d9083d523107'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]KRoW[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/000/789/cinematic/chif-from-russia_1408533182.jpg?1408533182
+['pars', {'roomslug': 'chif-from-russia', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/000/789/cinematic/chif-from-russia_1408533182.jpg?1408533182', 'title': 'Chif from Russia', 'url': '/Chif-from-Russia', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'e4074a62-0804-4771-a861-cc97d94db79c'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]Chif from Russia[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/000/084/cinematic/thefaptrap_1408217578.png?1408217578
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'thefaptrap', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': 'thefaptrap', 'url': '/thefaptrap', 'type': 'js', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': 'b55904d2-59b5-4f18-876b-6d1f721185b8'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]thefaptrap[/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/171/cinematic/reckontv_1408495811.jpg?1408495811
+['pars', {'roomslug': 'reckontv', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/171/cinematic/reckontv_1408495811.jpg?1408495811', 'title': 'ReckonTV', 'url': '/ReckonTV', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '6ba4011a-4cd1-4282-84dd-713192c3b411'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]ReckonTV[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/002/356/cinematic/dj-babydee-best-of-the-old-school-jams_1408218650.jpg?1408218650
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'dj-babydee-best-of-the-old-school-jams', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': 'DJ BabyDee Best of the Old School Jams', 'url': '/DJ-BabyDee-Best-of-the-Old-School-Jams', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '0a906f63-c299-42c4-9532-5fd8a493a727'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]DJ BabyDee Best of the Old School Jams[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/000/372/cinematic/third-party_1408217717.jpg?1408217717
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'third-party', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': 'third party', 'url': '/third-party', 'type': 'js', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': 'e3dc56e2-48c1-4207-ab73-c6e80e860ac9'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]third party[/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/assets/rooms/avatar_default_gray_cinematic.png
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'baddestgurlclub', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': 'baddestgurlclub', 'url': '/baddestgurlclub', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': 'cd5d9cab-2b2d-466c-acd1-11cb543c47e6'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]baddestgurlclub[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/assets/rooms/avatar_default_gray_cinematic.png
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'testin', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': 'testin', 'url': '/testin', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '442072e5-ce39-4719-9781-5ef4f3c4c351'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]testin[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/assets/rooms/avatar_default_gray_cinematic.png
+['urllib2.HTTPError', HTTPError()]
+['pars', {'roomslug': 'o000o', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\art\\default_channel.png', 'title': '-o000o-', 'url': '/o000o', 'type': 'js', 'section': '', 'live': 'Live', 'mode': 'PlayStreamUP', 'roomid': '4514dff7-d8f5-431c-afca-67289eba6d67'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]-o000o-[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR][/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/308/cinematic/gakinotsukai_1408396083.png?1408396083
+['pars', {'roomslug': 'gakinotsukai', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/016/308/cinematic/gakinotsukai_1408396083.png?1408396083', 'title': 'gakinotsukai', 'url': '/gakinotsukai', 'type': 'js', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': 'df3ca364-65c4-4407-a23d-79ae015091e8'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]gakinotsukai[/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/010/619/cinematic/stargate-sg1_1408233416.jpg?1408233416
+['pars', {'roomslug': 'stargate-sg1', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/010/619/cinematic/stargate-sg1_1408233416.jpg?1408233416', 'title': 'stargate sg1', 'url': '/stargate-sg1', 'type': 'js', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': '87c209fd-a74d-42a4-917f-fd30e7ce13ad'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]stargate sg1[/COLOR]'}]
+img:  http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/309/cinematic/cherrydoomxc_1407955276.png?1407955276
+['pars', {'roomslug': 'cherrydoomxc', 'site': '', 'imdb_id': '', 'fimg': 'F:\\zzz__AppData\\XBMC\\portable_data\\addons\\plugin.video.streamup\\fanart.jpg', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/309/cinematic/cherrydoomxc_1407955276.png?1407955276', 'title': 'CherryDoomXC', 'url': '/CherryDoomXC', 'type': 'js', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': 'f267e0d3-9485-47b0-8df9-e28f198f40c7'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]CherryDoomXC[/COLOR]'}]
+
+,['pars', {'streamurl': '', 'roomslug': 'stargate-sg1', 'site': '', 'imdb_id': '', 'fimg': '', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/010/619/cinematic/stargate-sg1_1408233416.jpg?1408233416', 'title': 'stargate sg1', 'url': '/stargate-sg1', 'type': 'js', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': '87c209fd-a74d-42a4-917f-fd30e7ce13ad'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]stargate sg1[/COLOR]'}]
+https://streamup.com/stargate-sg1
 
 
 
 
+## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
+
+POST /rooms/entertainment?page=6 already_loaded_rooms%5B%5D=91813392-05eb-486c-ba35-588c3d83f194&already_loaded_rooms%5B%5D=d69fffd3-336f-4e1f-a096-6ee4607bf8ac&already_loaded_rooms%5B%5D=f2a57053-5961-4359-a7d5-168ed39a0b96&already_loaded_rooms%5B%5D=c2e4a821-6dd4-455e-9bb0-eb8270cf4bbd&already_loaded_rooms%5B%5D=1e8ebe32-00b0-4781-82a8-465fc9baee14&already_loaded_rooms%5B%5D=4100844d-fa8f-47b0-9614-08e282e2e72d&already_loaded_rooms%5B%5D=cec937a9-4a74-47bd-bad2-1c14186b8ade&already_loaded_rooms%5B%5D=ccf5beca-7df3-41ae-9836-eaa84fc9c8a1&already_loaded_rooms%5B%5D=525b83ee-1433-4f6d-be06-63828385e741&already_loaded_rooms%5B%5D=228880f4-ee9b-4b18-b479-ac178455d638&already_loaded_rooms%5B%5D=40e95b70-3cce-439b-ac63-77159c36097d&already_loaded_rooms%5B%5D=6f36d8c3-6773-48d7-9ce6-fae3eb86ae0d&already_loaded_rooms%5B%5D=cf4f1ea6-f320-43d5-b2fa-7d680f05f4e8&already_loaded_rooms%5B%5D=49242fcd-b673-43a0-b8eb-79da4282d568&already_loaded_rooms%5B%5D=716cdf03-6e37-4157-b1ed-1c87bc573d6a&already_loaded_rooms%5B%5D=7ee98689-7aa0-45c1-a9b1-d9083d523107&already_loaded_rooms%5B%5D=7e80e4bc-17ec-4f2a-a1e8-a2e1e89bf3ae&already_loaded_rooms%5B%5D=d650e758-6b66-421f-a93e-29af80fdbb4b&already_loaded_rooms%5B%5D=107df4b3-1c36-4c84-8f11-d3ce87d3c373&already_loaded_rooms%5B%5D=5a7f1a18-8106-4f3e-b3bf-7be7467086de&already_loaded_rooms%5B%5D=c3d8bcc1-3019-4fef-95b4-90c47c2661dc&already_loaded_rooms%5B%5D=4f654d83-081a-4254-b9b3-68332c620abd&already_loaded_rooms%5B%5D=dcc02dd4-6c8a-4282-bf02-4bc77a845dba&already_loaded_rooms%5B%5D=96c36444-8709-4c3f-8b1f-06900e254ea4&already_loaded_rooms%5B%5D=6ba4011a-4cd1-4282-84dd-713192c3b411&already_loaded_rooms%5B%5D=0a906f63-c299-42c4-9532-5fd8a493a727&already_loaded_rooms%5B%5D=e4074a62-0804-4771-a861-cc97d94db79c&already_loaded_rooms%5B%5D=09476499-ff47-4162-b3f3-8e35222d59aa&already_loaded_rooms%5B%5D=5d8e8ac7-8b31-41cb-a060-2e1c4fbc189e&already_loaded_rooms%5B%5D=e3dc56e2-48c1-4207-ab73-c6e80e860ac9&already_loaded_rooms%5B%5D=7a50d7f9-3c85-42c0-a3ba-535825f22158&already_loaded_rooms%5B%5D=cd5d9cab-2b2d-466c-acd1-11cb543c47e6&already_loaded_rooms%5B%5D=a39f295f-5d51-4ecc-a7a9-976753f54594&already_loaded_rooms%5B%5D=624977aa-f60c-40e3-bcd2-08bd75c34ad4&already_loaded_rooms%5B%5D=df3ca364-65c4-4407-a23d-79ae015091e8&already_loaded_rooms%5B%5D=9fcfa813-2d42-41ee-a2e4-98dbc964bc0b&already_loaded_rooms%5B%5D=62935b4e-fc44-4720-a174-65ca294042c6&already_loaded_rooms%5B%5D=87c209fd-a74d-42a4-917f-fd30e7ce13ad&already_loaded_rooms%5B%5D=572d5c56-bb4b-4d99-b356-078b4904dacc&already_loaded_rooms%5B%5D=e8b0fc1b-b8ef-4b07-836f-9f908a2d7853&already_loaded_rooms%5B%5D=a14c97d6-7bf6-4b29-8ad6-168a56892f0a&already_loaded_rooms%5B%5D=995da4b3-b441-4c33-9071-aabed5df581a&already_loaded_rooms%5B%5D=f267e0d3-9485-47b0-8df9-e28f198f40c7&already_loaded_rooms%5B%5D=5242b410-ce38-463a-abdd-53c16cb50d02&already_loaded_rooms%5B%5D=31a8af5f-e6b4-47eb-bf73-933ee4fd1ac6&already_loaded_rooms%5B%5D=64265f6c-95d4-4e2e-a4bb-f92d284cb504&already_loaded_rooms%5B%5D=b9675201-5f52-446d-8604-5e7aef6a42db&already_loaded_rooms%5B%5D=522183e9-410e-4a27-9771-d51abfdc70e2&already_loaded_rooms%5B%5D=db7b4a3a-e9fb-4a38-87a9-12bb86d1a8c6&already_loaded_rooms%5B%5D=f3df0745-71c3-423a-bdd0-4f5eabaab377&already_loaded_rooms%5B%5D=41c191ef-de03-4493-9221-53262f1583da&already_loaded_rooms%5B%5D=f367085f-5806-494d-97c5-f75af853ed21&already_loaded_rooms%5B%5D=9ccc3a73-4b04-4004-9dee-c20c8da6797b&already_loaded_rooms%5B%5D=f02b542b-7ef9-4eec-ae28-66f53a5ff0f3&already_loaded_rooms%5B%5D=64ad1d13-db18-4722-9db5-9055841e2c4e&already_loaded_rooms%5B%5D=ba3e1f77-27d5-43dd-82d0-c5c54fb849f4&already_loaded_rooms%5B%5D=f41144e0-dac3-413c-9a05-b22d07bb7d41&already_loaded_rooms%5B%5D=db979b70-bf30-466f-8c4f-5cf7232f1c92&already_loaded_rooms%5B%5D=a54031ca-a473-4703-b23f-88252e3b1ef2&already_loaded_rooms%5B%5D=41745541-1a3f-4075-8681-54523e4e7d12
+
+POST 
+/rooms/entertainment?page=6 
+already_loaded_rooms%5B%5D=91813392-05eb-486c-ba35-588c3d83f194
+&already_loaded_rooms%5B%5D=d69fffd3-336f-4e1f-a096-6ee4607bf8ac
+&already_loaded_rooms%5B%5D=f2a57053-5961-4359-a7d5-168ed39a0b96
+&already_loaded_rooms%5B%5D=c2e4a821-6dd4-455e-9bb0-eb8270cf4bbd
+&already_loaded_rooms%5B%5D=1e8ebe32-00b0-4781-82a8-465fc9baee14
+&already_loaded_rooms%5B%5D=4100844d-fa8f-47b0-9614-08e282e2e72d
+&already_loaded_rooms%5B%5D=cec937a9-4a74-47bd-bad2-1c14186b8ade
+&already_loaded_rooms%5B%5D=ccf5beca-7df3-41ae-9836-eaa84fc9c8a1
+&already_loaded_rooms%5B%5D=525b83ee-1433-4f6d-be06-63828385e741
+&already_loaded_rooms%5B%5D=228880f4-ee9b-4b18-b479-ac178455d638
+&already_loaded_rooms%5B%5D=40e95b70-3cce-439b-ac63-77159c36097d
+&already_loaded_rooms%5B%5D=6f36d8c3-6773-48d7-9ce6-fae3eb86ae0d
+&already_loaded_rooms%5B%5D=cf4f1ea6-f320-43d5-b2fa-7d680f05f4e8
+&already_loaded_rooms%5B%5D=49242fcd-b673-43a0-b8eb-79da4282d568
+&already_loaded_rooms%5B%5D=716cdf03-6e37-4157-b1ed-1c87bc573d6a
+&already_loaded_rooms%5B%5D=7ee98689-7aa0-45c1-a9b1-d9083d523107
+&already_loaded_rooms%5B%5D=7e80e4bc-17ec-4f2a-a1e8-a2e1e89bf3ae
+&already_loaded_rooms%5B%5D=d650e758-6b66-421f-a93e-29af80fdbb4b
+&already_loaded_rooms%5B%5D=107df4b3-1c36-4c84-8f11-d3ce87d3c373
+&already_loaded_rooms%5B%5D=5a7f1a18-8106-4f3e-b3bf-7be7467086de
+&already_loaded_rooms%5B%5D=c3d8bcc1-3019-4fef-95b4-90c47c2661dc
+&already_loaded_rooms%5B%5D=4f654d83-081a-4254-b9b3-68332c620abd
+&already_loaded_rooms%5B%5D=dcc02dd4-6c8a-4282-bf02-4bc77a845dba
+&already_loaded_rooms%5B%5D=96c36444-8709-4c3f-8b1f-06900e254ea4
+&already_loaded_rooms%5B%5D=6ba4011a-4cd1-4282-84dd-713192c3b411
+&already_loaded_rooms%5B%5D=0a906f63-c299-42c4-9532-5fd8a493a727
+&already_loaded_rooms%5B%5D=e4074a62-0804-4771-a861-cc97d94db79c
+&already_loaded_rooms%5B%5D=09476499-ff47-4162-b3f3-8e35222d59aa
+&already_loaded_rooms%5B%5D=5d8e8ac7-8b31-41cb-a060-2e1c4fbc189e
+&already_loaded_rooms%5B%5D=e3dc56e2-48c1-4207-ab73-c6e80e860ac9
+&already_loaded_rooms%5B%5D=7a50d7f9-3c85-42c0-a3ba-535825f22158
+&already_loaded_rooms%5B%5D=cd5d9cab-2b2d-466c-acd1-11cb543c47e6
+&already_loaded_rooms%5B%5D=a39f295f-5d51-4ecc-a7a9-976753f54594
+&already_loaded_rooms%5B%5D=624977aa-f60c-40e3-bcd2-08bd75c34ad4
+&already_loaded_rooms%5B%5D=df3ca364-65c4-4407-a23d-79ae015091e8
+&already_loaded_rooms%5B%5D=9fcfa813-2d42-41ee-a2e4-98dbc964bc0b
+&already_loaded_rooms%5B%5D=62935b4e-fc44-4720-a174-65ca294042c6
+&already_loaded_rooms%5B%5D=87c209fd-a74d-42a4-917f-fd30e7ce13ad
+&already_loaded_rooms%5B%5D=572d5c56-bb4b-4d99-b356-078b4904dacc
+&already_loaded_rooms%5B%5D=e8b0fc1b-b8ef-4b07-836f-9f908a2d7853
+&already_loaded_rooms%5B%5D=a14c97d6-7bf6-4b29-8ad6-168a56892f0a
+&already_loaded_rooms%5B%5D=995da4b3-b441-4c33-9071-aabed5df581a
+&already_loaded_rooms%5B%5D=f267e0d3-9485-47b0-8df9-e28f198f40c7
+&already_loaded_rooms%5B%5D=5242b410-ce38-463a-abdd-53c16cb50d02
+&already_loaded_rooms%5B%5D=31a8af5f-e6b4-47eb-bf73-933ee4fd1ac6
+&already_loaded_rooms%5B%5D=64265f6c-95d4-4e2e-a4bb-f92d284cb504
+&already_loaded_rooms%5B%5D=b9675201-5f52-446d-8604-5e7aef6a42db
+&already_loaded_rooms%5B%5D=522183e9-410e-4a27-9771-d51abfdc70e2
+&already_loaded_rooms%5B%5D=db7b4a3a-e9fb-4a38-87a9-12bb86d1a8c6
+&already_loaded_rooms%5B%5D=f3df0745-71c3-423a-bdd0-4f5eabaab377
+&already_loaded_rooms%5B%5D=41c191ef-de03-4493-9221-53262f1583da
+&already_loaded_rooms%5B%5D=f367085f-5806-494d-97c5-f75af853ed21
+&already_loaded_rooms%5B%5D=9ccc3a73-4b04-4004-9dee-c20c8da6797b
+&already_loaded_rooms%5B%5D=f02b542b-7ef9-4eec-ae28-66f53a5ff0f3
+&already_loaded_rooms%5B%5D=64ad1d13-db18-4722-9db5-9055841e2c4e
+&already_loaded_rooms%5B%5D=ba3e1f77-27d5-43dd-82d0-c5c54fb849f4
+&already_loaded_rooms%5B%5D=f41144e0-dac3-413c-9a05-b22d07bb7d41
+&already_loaded_rooms%5B%5D=db979b70-bf30-466f-8c4f-5cf7232f1c92
+&already_loaded_rooms%5B%5D=a54031ca-a473-4703-b23f-88252e3b1ef2
+&already_loaded_rooms%5B%5D=41745541-1a3f-4075-8681-54523e4e7d12
+
+https://streamup-static.s3.amazonaws.com/maintenance.html
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style type="text/css">
+        html, body, iframe { margin: 0; padding: 0; height: 100%; }
+        iframe { display: block; width: 100%; border: none; }
+      </style>
+    <title>Offline for Maintenance</title>
+    </head>
+    <body>
+      <iframe src="https://streamup-static.s3.amazonaws.com/maintenance.html">
+        <p>Application Error</p>
+      </iframe>
+    </body>
+    </html>
+
+https://streamup-static.s3.amazonaws.com/
+<?xml version="1.0" encoding="UTF-8"?>
+<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<Name>streamup-static</Name><Prefix></Prefix><Marker></Marker><MaxKeys>1000</MaxKeys>
+<IsTruncated>false</IsTruncated><Contents><Key>css/</Key>
+<LastModified>2013-09-17T19:01:11.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag>
+<Size>0</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>css/css.css</Key>
+<LastModified>2014-04-15T02:19:48.000Z</LastModified><ETag>&quot;15bc102f44d1c0365ed152945e1b0f6e&quot;</ETag>
+<Size>168219</Size><Owner><ID>1c913fd3094b20455b3d24835ccba37766eaaa0b78330d6af016fee6350908cf</ID>
+<DisplayName>kyle</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>css/images/</Key>
+<LastModified>2014-01-03T14:25:22.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag>
+<Size>0</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>css/images/headerLogo.png</Key>
+<LastModified>2014-02-05T01:28:55.000Z</LastModified><ETag>&quot;310700155ecb4b529e5a25b127b869c8&quot;</ETag>
+<Size>1866</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>css/images/headerLogo@2x.png</Key>
+<LastModified>2014-02-05T01:28:55.000Z</LastModified><ETag>&quot;b4a378df97239d1538bb59e1f9586c39&quot;</ETag>
+<Size>2871</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>favicon-16.png</Key>
+<LastModified>2013-09-17T19:07:46.000Z</LastModified><ETag>&quot;907f95873f254f2978c1ee78ae7dce1c&quot;</ETag>
+<Size>1268</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>favicon-32.png</Key>
+<LastModified>2013-09-17T19:07:46.000Z</LastModified><ETag>&quot;17c84e7bde891cd71d7d3c22ec716281&quot;</ETag>
+<Size>1729</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>favicon.ico</Key>
+<LastModified>2013-09-17T19:07:46.000Z</LastModified><ETag>&quot;194a39110bf9fef206040d55e7395027&quot;</ETag>
+<Size>8348</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/</Key>
+<LastModified>2013-09-17T19:01:00.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag>
+<Size>0</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/</Key>
+<LastModified>2013-09-17T19:01:01.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag><Size>0</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/headerLogo.png</Key><LastModified>2014-02-05T01:28:24.000Z</LastModified><ETag>&quot;310700155ecb4b529e5a25b127b869c8&quot;</ETag><Size>1866</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/headerLogo@2x.png</Key><LastModified>2014-02-05T01:28:25.000Z</LastModified><ETag>&quot;b4a378df97239d1538bb59e1f9586c39&quot;</ETag><Size>2871</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/streamup-text-square.png</Key><LastModified>2013-09-18T17:52:50.000Z</LastModified><ETag>&quot;66144e04f15e0ac235645e2e2b2af800&quot;</ETag><Size>21445</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/streamupLogo56px.png</Key><LastModified>2013-09-17T19:01:02.000Z</LastModified><ETag>&quot;00e8175599f9199742993cec2ce02a90&quot;</ETag><Size>1748</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/streamupLogo56px@2x.png</Key><LastModified>2013-09-17T19:01:03.000Z</LastModified><ETag>&quot;9af8147e5ecf4d3d2cc8653152e079ed&quot;</ETag><Size>3015</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/streamupLogoGrey56px.png</Key><LastModified>2013-09-17T19:01:04.000Z</LastModified><ETag>&quot;6441ec4cf0ad59b3786acf66e2470584&quot;</ETag><Size>1956</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/streamupLogoGrey56px@2x.png</Key><LastModified>2013-09-17T19:01:05.000Z</LastModified><ETag>&quot;b59647a5f30fa4f5d872fbb6d3f14f33&quot;</ETag><Size>2952</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/streamupLogoSocialShare.png</Key><LastModified>2013-09-17T19:01:06.000Z</LastModified><ETag>&quot;c553943f11502073710922aea287a010&quot;</ETag><Size>4326</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/logos/streamupLogoSocialShare@2x.png</Key>
+<LastModified>2013-09-17T19:01:07.000Z</LastModified><ETag>&quot;ab6aa7567a4b993164e3013ccb25ca5b&quot;</ETag>
+<Size>8004</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>images/promo-medium.png</Key>
+<LastModified>2014-08-11T17:32:56.000Z</LastModified><ETag>&quot;322d5e6c7b117ccf22687f51c74e005e&quot;</ETag>
+<Size>309689</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>js/</Key>
+<LastModified>2013-09-17T19:00:58.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag>
+<Size>0</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>js/retina.js</Key>
+<LastModified>2013-09-17T19:14:57.000Z</LastModified><ETag>&quot;d3e2d6e7887add1872c197bab95a16b7&quot;</ETag>
+<Size>1326</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>maintenance.html</Key>
+<LastModified>2014-04-15T02:17:53.000Z</LastModified><ETag>&quot;413ad2183674539c9c0aa0bd34f4aece&quot;</ETag>
+<Size>3257</Size><Owner><ID>1c913fd3094b20455b3d24835ccba37766eaaa0b78330d6af016fee6350908cf</ID>
+<DisplayName>kyle</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>touch-icon-114.png</Key>
+<LastModified>2013-09-17T19:07:58.000Z</LastModified><ETag>&quot;4d089ca4fb1cefce5409e6b52d3c1b68&quot;</ETag>
+<Size>3558</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>touch-icon-144.png</Key>
+<LastModified>2013-09-17T19:07:58.000Z</LastModified><ETag>&quot;e5075ad9723786963222df3ded96d36a&quot;</ETag>
+<Size>4404</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>touch-icon-72.png</Key>
+<LastModified>2013-09-17T19:07:58.000Z</LastModified><ETag>&quot;475700d97b36867ae89bdb5a23d5e7e0&quot;</ETag><Size>2579</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>touch-icon.png</Key><LastModified>2013-09-17T19:07:59.000Z</LastModified><ETag>&quot;f46d0b1e1fadaf11b5837685c444a401&quot;</ETag><Size>2272</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+
+['pars', {'roomslug': 'new-releases-2010-2014-movies-random', 'site': '', 'imdb_id': '', 'fimg': '', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/756/cinematic/new-releases-2010-2014-movies-random_1407487594.png?1407487594', 'title': 'NEW RELEASES 2010-2014 Movies - Random', 'url': '/NEW-RELEASES-2010-2014-Movies-Random', 'type': 'html', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': '75931be9-7d94-4b67-9962-cf3c41ff483a'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]NEW RELEASES 2010-2014 Movies - Random[/COLOR]'}]
+http://streamup.com/new-releases-2010-2014-movies-random
+,['pars', {'streamurl': 'rtmp://66.55.92.79/75931be9-7d94-4b67-9962-cf3c41ff483a', 'roomslug': 'new-releases-2010-2014-movies-random', 'site': '', 'imdb_id': '', 'fimg': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/014/756/original/new-releases-2010-2014-movies-random-background_1407488102.jpg?1407488102', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/756/cinematic/new-releases-2010-2014-movies-random_1407487594.png?1407487594', 'title': 'NEW RELEASES 2010-2014 Movies - Random', 'url': '/NEW-RELEASES-2010-2014-Movies-Random', 'type': 'html', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': '75931be9-7d94-4b67-9962-cf3c41ff483a'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]NEW RELEASES 2010-2014 Movies - Random[/COLOR]'}]
 
 
+,['pars', {'streamurl': 'rtmp://66.55.92.79/b9675201-5f52-446d-8604-5e7aef6a42db/', 'roomslug': 'new-releases-movies-2013-2014', 'site': '', 'imdb_id': '', 'fimg': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/014/322/original/new-releases-movies-2013-2014-background_1407788418.jpg?1407788418', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/322/cinematic/new-releases-movies-2013-2014_1407788871.jpg?1407788871', 'title': 'New Releases Movies 2013 - 2014', 'url': '/New-Releases-Movies-2013-2014', 'type': 'html', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': 'b9675201-5f52-446d-8604-5e7aef6a42db'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]New Releases Movies 2013 - 2014[/COLOR]'}]
+http://streamup.com/New-Releases-Movies-2013-2014
 
 
 ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 

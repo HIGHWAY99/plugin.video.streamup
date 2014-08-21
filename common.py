@@ -298,6 +298,7 @@ def spBeforeSplit(t,ss):
 	return t
 def TP(s): return xbmc.translatePath(s)
 def TPap(s,fe='.py'): return xbmc.translatePath(os.path.join(_addonPath,s+fe))
+def TPapp(s,fe=''): return xbmc.translatePath(os.path.join(_addonPath,s+fe))
 
 def CopyAFile(tFrom,tTo):
 	try:

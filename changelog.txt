@@ -1,3 +1,7 @@
+[B]v0.0.7[/B]
+Local Lists.
+Some misc. testing and code mods.
+
 [B]v0.0.6[/B]
 Fixed next-page system again.
 Site-featured streams.
