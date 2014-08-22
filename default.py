@@ -303,7 +303,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 	if len(Url)==0: return
 	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): Url=mainSite+Url
 	deb('Url',Url); 
-	if (page==1) or (len(Page)==0): html=messupText(nolines(nURL(Url)),True,True); IdsList=[]
+	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url); 
 	else: 
 		##Url=Url.replace('http://','https://'); 
 		IdsList=eval(idList); IdLa=0; iLISTd=''; 
@@ -314,14 +314,23 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 			iLISTd+=""+"already_loaded_rooms[]="+IdL+""
 		#	#iLISTd+=""+"already_loaded_rooms[]="+IdL+"&"
 		#	#iLISTd+=""+"already_loaded_rooms%5B%5D="+IdL+"&"
+		## ### ## 
+		UrlBB=Url+"?page="+str(page)+""+str(iLISTd); 
+		debob(['UrlBB',UrlBB]); 
+		## ### ## 
+		##html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
+		html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url}); 
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
+		## ### ## 
 		##html=nURL(Url,method='post',form_data={'page':str(page)},headers={'Referer':Url})
 		##html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms%5B%5D':str(idList)},headers={'Referer':Url})
-		html=nURL(Url+"?page="+str(page),method='post',form_data={'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page),method='post',form_data={'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		##html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
-		html=messupText(nolines(html),True,True); 
+		## ### ## 
+	html=messupText(nolines(html),True,True); 
 	deb('length of html',str(len(html))); #debob(html); 
 	if len(html)==0: eod(); return
 	if "<title>Offline for Maintenance</title>" in html: debob("Offline for Maintenance"); eod(); return
