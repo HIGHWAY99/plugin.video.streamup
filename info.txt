@@ -412,6 +412,11 @@ http://streamup.com/new-releases-2010-2014-movies-random
 ,['pars', {'streamurl': 'rtmp://66.55.92.79/b9675201-5f52-446d-8604-5e7aef6a42db/', 'roomslug': 'new-releases-movies-2013-2014', 'site': '', 'imdb_id': '', 'fimg': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/backgrounds/000/014/322/original/new-releases-movies-2013-2014-background_1407788418.jpg?1407788418', 'img': 'http://d2f6rj4zotxt7y.cloudfront.net/rooms/avatars/000/014/322/cinematic/new-releases-movies-2013-2014_1407788871.jpg?1407788871', 'title': 'New Releases Movies 2013 - 2014', 'url': '/New-Releases-Movies-2013-2014', 'type': 'html', 'section': '', 'live': '', 'mode': 'PlayStreamUP', 'roomid': 'b9675201-5f52-446d-8604-5e7aef6a42db'}, 'labs', {u'plot': '', u'title': '[COLOR FFFFFFFF]New Releases Movies 2013 - 2014[/COLOR]'}]
 http://streamup.com/New-Releases-Movies-2013-2014
 
+https://streamup.com/The-Batchannel
+
+
+
+
 
 ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## ## ### ## 
 

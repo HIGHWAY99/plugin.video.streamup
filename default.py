@@ -303,23 +303,40 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 	if len(Url)==0: return
 	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): Url=mainSite+Url
 	deb('Url',Url); 
-	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url); 
+	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url,cookie_file=CookFile); 
 	else: 
 		##Url=Url.replace('http://','https://'); 
-		IdsList=eval(idList); IdLa=0; iLISTd=''; 
+		IdsList=eval(idList); IdLa=0; iLISTd=''; IdsListZ=eval(idList); 
 		for IdL in IdsList:
 			#if IdLa==0: iLISTd+=' '; IdLa=1
-			if IdLa==0: iLISTd+='&'; IdLa=1
+			#if IdLa==0: iLISTd+='&'; IdLa=1
+			if IdLa==0: iLISTd+=''; IdLa=1
 			else: iLISTd+='&'
 			iLISTd+=""+"already_loaded_rooms[]="+IdL+""
 		#	#iLISTd+=""+"already_loaded_rooms[]="+IdL+"&"
 		#	#iLISTd+=""+"already_loaded_rooms%5B%5D="+IdL+"&"
 		## ### ## 
-		UrlBB=Url+"?page="+str(page)+""+str(iLISTd); 
+		UrlBB=Url #+"?page="+str(page)+""#+str(iLISTd); 
 		debob(['UrlBB',UrlBB]); 
+		debob(['iLISTd',iLISTd]); 
+		debob(['idList',idList]); 
 		## ### ## 
+		
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url},cookie_file=CookFile,load_cookie=True); 
+		html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url},cookie_file=CookFile,load_cookie=True); 
+		
+		
+		
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
+		
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(iLISTd)},headers={'Referer':Url}); 
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url}); 
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':idList},headers={'Referer':Url}); 
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url}); 
 		##html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
-		html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url}); 
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url}); 
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
 		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
 		## ### ## 
 		##html=nURL(Url,method='post',form_data={'page':str(page)},headers={'Referer':Url})

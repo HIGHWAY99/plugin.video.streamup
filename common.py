@@ -66,6 +66,8 @@ _artIcon		=_addon.get_icon();
 _artFanart	=_addon.get_fanart()
 
 ##### Important Functions with some dependencies #####
+def dPath(s,fe=''): return xbmc.translatePath(os.path.join(_datapath,s+fe))
+CookFile=dPath('StreamupCookie.txt'); 
 def addstv(id,value=''): _addon.addon.setSetting(id=id,value=value) ## Save Settings
 def addst(r,s=''): return _addon.get_setting(r)   ## Get Settings
 def addpr(r,s=''): return _addon.queries.get(r,s) ## Get Params
@@ -265,10 +267,11 @@ def nURL(url,method='get',form_data={},headers={},html='',proxy='',User_Agent=''
 		except Exception,e: debob(['Exception',e]); html=dhtml
 		except: html=dhtml
 	elif method.lower()=='post':
-		try: html=net.http_POST(url,form_data=form_data,headers=headers).content #,compression=False
-		except urllib2.HTTPError,e: debob(['urllib2.HTTPError',e]); html=dhtml
-		except Exception,e: debob(['Exception',e]); html=dhtml
-		except: html=dhtml
+		#try: 
+		html=net.http_POST(url,form_data=form_data,headers=headers).content #,compression=False
+		#except urllib2.HTTPError,e: debob(['urllib2.HTTPError',e]); html=dhtml
+		#except Exception,e: debob(['Exception',e]); html=dhtml
+		#except: html=dhtml
 	elif method.lower()=='head':
 		try: html=net.http_HEAD(url,headers=headers).content
 		except urllib2.HTTPError,e: debob(['urllib2.HTTPError',e]); html=dhtml
