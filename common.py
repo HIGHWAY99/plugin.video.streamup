@@ -64,7 +64,7 @@ _artPath		=xbmc.translatePath(os.path.join(_addonPath,ps('_addon_path_art')))
 _datapath 	=xbmc.translatePath(_addon.get_profile()); 
 _artIcon		=_addon.get_icon(); 
 _artFanart	=_addon.get_fanart()
-
+xbmcLogFile =xbmc.translatePath(os.path.join('special://logpath','xbmc.log'))
 ##### Important Functions with some dependencies #####
 def dPath(s,fe=''): return xbmc.translatePath(os.path.join(_datapath,s+fe))
 CookFile=dPath('StreamupCookie.txt'); 
@@ -1194,6 +1194,17 @@ def refresh_meta_manual(video_type,old_title,imdb,alt_id,year):
 ### ############################################################################################################
 ### ############################################################################################################
 
+def DoE(e): xbmc.executebuiltin(e)
+def DoAW(e): xbmc.executebuiltin("ActivateWindow(%s)" % str(e))
+def DoRW(e): xbmc.executebuiltin("ReplaceWindow(%s)" % str(e))
+def DoRA(e): xbmc.executebuiltin("RunAddon(%s)" % str(e))
+def DoRA2(e,e2="1",e3=""): xbmc.executebuiltin('RunAddon(%s,"%s","%s")' % (str(e),str(e2),e3)); 
+def DoA(a): xbmc.executebuiltin("Action(%s)" % str(a))
+def DoCM(a): xbmc.executebuiltin("Control.Message(windowid=%s)" % (str(a)))
+def DoSC(a): xbmc.executebuiltin("SendClick(%s)" % (str(a)))
+def DoSC2(a,Id): xbmc.executebuiltin("SendClick(%s,%s)" % (str(a),str(Id)))
+def DoStopScript(e): xbmc.executebuiltin("StopScript(%s)" % str(e))
+def DoTD(): xbmc.executebuiltin("ToggleDebug")
 
 
 

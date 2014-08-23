@@ -227,8 +227,8 @@ def psgn(x,t=".png"):
 ### ############################################################################################################
 ### ############################################################################################################
 def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey=''):
-	debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); 
-	PlayerMethod=addst("core-player")
+	debob("--DO A PLAYER SPLIT HERE--"); debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); 
+	PlayerMethod=addst("core-player"); youtubekey=''; 
 	if   (PlayerMethod=='DVDPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_DVDPLAYER
 	elif (PlayerMethod=='MPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_MPLAYER
 	elif (PlayerMethod=='PAPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_PAPLAYER
@@ -253,9 +253,37 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 			except: Name='Unknown'
 		
 		
+		#logging.Logger("streamup-test").setLevel(10); 
+		#url='rtmpdump -r rtmp://%s/%s -y XXXXXXXXXXXXXXXXXXXXxxxxxxxxxxxxz -v -V -o test.mp4' % ('66.55.92.79',roomId)
 		
 		url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
+		if len(streamkey)==0:
+			DoTD(); #DoA("ToggleDebug"); 
+			url='rtmp://%s/%s' % ('66.55.92.79',roomId)
+			play.play(url)
+			xbmc.sleep(8000)
+			xbmcLogData=common._OpenFile(xbmcLogFile)
+			if "--DO A PLAYER SPLIT HERE--" in xbmcLogData: xbmcLogData=xbmcLogData.split("--DO A PLAYER SPLIT HERE--")[-1]
+			DoTD(); #DoA("ToggleDebug"); 
+			deb("test file",TPapp("-- player-test.txt")); 
+			common._SaveFile(TPapp("-- player-test.txt"),xbmcLogData); 
+			try: streamkey=   re.compile('INFO:\s+Property:\s+<Name:\s+.*?,\s+STRING:\s+{"message":"startShowMode","name":".*?","active":\D*,"streamKey":"([0-9A-Za-z]+)","uuid":".*?","type":"\D*"}>').findall(xbmcLogData)[-1]
+			except: return
+			url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
+			if (len(streamkey)==0) and (len(youtubekey)==0):
+				try: youtubekey=re.compile('INFO:\s+Property:\s+<Name:\s+.*?,\s+STRING:\s+{"message":"startYoutubeMode","position":\d*,"isActive":\D*,"currentIndex":\d*,"duration":\d*,"playlistCount":\d*,"videoID":"(.+?)","paused":\d*,"loop":"\D*","uuid":".*?","type":"youtube"}').findall(xbmcLogData)[-1]
+				except: return
+				deb("youtubekey",youtubekey); 
+				#INFO: Property: <Name:           no-name., STRING:	{"message":"startYoutubeMode","position":2982,"isActive":true,"currentIndex":0,"duration":5596,"playlistCount":1,"videoID":"sG3bmmcg6tw","paused":false,"loop":"false","uuid":"050f342c-ad54-4798-86de-94db6b8a92dc","type":"youtube"}>
+				#INFO: Property: <Name:           no-name., STRING:	{"message":"startYoutubeMode","position":2365,"isActive":true,"currentIndex":5,"duration":3028,"playlistCount":12,"videoID":"qmjVOUW3Szo","paused":false,"loop":"true","uuid":"2750e6ee-354c-4fa7-8b8b-6f7a07b821f1","type":"youtube"}>
+				url='plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid=%s' % (youtubekey)
+				#url = 'plugin://plugin.video.youtube/?action=play_video&videoid=%s' % youtubekey
+				xbmc.executebuiltin("xbmc.PlayMedia("+url+")")
+				return
+			##
 		
+		
+		#url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
 		#url='rtmp://%s/%s%s' % ('66.55.92.79/app',roomId,'.flv')
 		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/app',roomId,'.flv')
 		#url='rtmp://%s playpath=%s%s' % ('66.55.92.79:1935/'+roomSlug,roomId,'')
@@ -292,6 +320,7 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	except:
 		try: play.play(url)
 		except: t=''
+	#logging().Logger().setLevel(30); 
 	### ### ## 
 
 def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
