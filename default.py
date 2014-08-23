@@ -294,7 +294,13 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		except: t=''
 	### ### ## 
 
-def ListShows(Url,Page='',TyPE='js',idList='[]'):
+def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
+	if len(csrfToken)==0:
+		maipageHtml=nURL('https://streamup.com/',cookie_file=CookFile,load_cookie=False,save_cookie=True)
+		tokenParam='content="(.*?)" name="csrf-token"'
+		csrfToken=re.compile(tokenParam).findall(maipageHtml)[0]
+
+
 	debob(['Url',Url,'TyPE',TyPE])
 	if len(idList)==0: idList='[]'
 	if len(Page)==0: page=1
@@ -303,10 +309,13 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 	if len(Url)==0: return
 	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): Url=mainSite+Url
 	deb('Url',Url); 
-	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url,cookie_file=CookFile); 
+	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url ,cookie_file=CookFile,load_cookie=False,save_cookie=True,headers={'X-CSRF-Token':csrfToken,'X-Requested-With':'XMLHttpRequest'}); 
 	else: 
 		##Url=Url.replace('http://','https://'); 
-		IdsList=eval(idList); IdLa=0; iLISTd=''; IdsListZ=eval(idList); 
+		IdsList=eval(idList); IdLa=0; iLISTd=''; IdsListZ=eval(idList);
+		post_data={}
+		post_data=[('already_loaded_rooms[]', i) for i in IdsList]
+		print 'post_data',post_data
 		for IdL in IdsList:
 			#if IdLa==0: iLISTd+=' '; IdLa=1
 			#if IdLa==0: iLISTd+='&'; IdLa=1
@@ -316,15 +325,15 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 		#	#iLISTd+=""+"already_loaded_rooms[]="+IdL+"&"
 		#	#iLISTd+=""+"already_loaded_rooms%5B%5D="+IdL+"&"
 		## ### ## 
-		UrlBB=Url #+"?page="+str(page)+""#+str(iLISTd); 
+		UrlBB=Url +"?page="+str(page)+""#+str(iLISTd); 
 		debob(['UrlBB',UrlBB]); 
 		debob(['iLISTd',iLISTd]); 
 		debob(['idList',idList]); 
 		## ### ## 
 		
 		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url},cookie_file=CookFile,load_cookie=True); 
-		html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url},cookie_file=CookFile,load_cookie=True); 
-		
+		html=nURL(UrlBB,method='post',form_data=post_data,headers={'Referer':Url,'X-CSRF-Token':csrfToken,'X-Requested-With':'XMLHttpRequest','Origin': 'https://streamup.com','Accept':'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q='},cookie_file=CookFile,load_cookie=True,save_cookie=True)
+
 		
 		
 		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
@@ -343,7 +352,8 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 		##html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms%5B%5D':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
-		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
+		#html=nURL(Url+"?page="+str(page),method='post',form_data=post_data:str(idList)},headers={'Referer':Url}
+
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		##html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		## ### ## 
@@ -429,7 +439,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]'):
 			except: pass
 	NextPage=str(int(page)+1); 
 	if (("page="+NextPage) in html) and (not TyPE=='js|featured'):
-		_addon.add_directory({'mode':'ListShows','site':site,'url':Url,'page':NextPage,'type':str(TyPE),'idlist':str(ListOfIds)},{'title':cFL('>> Next %s' % cFL(NextPage,colorA),colorB)},is_folder=True,fanart=fanartSite,img=psgn('next'))
+		_addon.add_directory({'mode':'ListShows','site':site,'url':Url,'page':NextPage,'type':str(TyPE),'idlist':str(ListOfIds),'csrfToken':csrfToken},{'title':cFL('>> Next %s' % cFL(NextPage,colorA),colorB)},is_folder=True,fanart=fanartSite,img=psgn('next'))
 	set_view('tvshows',view_mode=addst('tvshows-view')); eod()
 
 def Fav_List(site='',section='',subfav=''):
@@ -598,8 +608,8 @@ def mode_subcheck(mode='',site='',section='',url=''):
 	elif (mode=='SpecialMenu'): 	SpecialMenu(url)
 	elif (mode=='DevFeaturedMenu'): 		DevFeaturedMenu()
 	elif (mode=='BrowseMenu'): 					BrowseMenu()
-	elif (mode=='ListShows'): 		ListShows(url,addpr('page',''),addpr('type',''),addpr('idlist',''))
-	elif (mode=='BrowseCat'): 		ListShows("http://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
+	elif (mode=='ListShows'): 		ListShows(url,addpr('page',''),addpr('type',''),addpr('idlist',''),addpr('csrfToken',''))
+	elif (mode=='BrowseCat'): 		ListShows("https://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='BrowseCat2'): 		ListShows("http://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='Search'):				DoSearch(addpr('title',''),url)
 	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('subfav','title'),addpr('subfav','img'),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''))
