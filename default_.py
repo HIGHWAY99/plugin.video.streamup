@@ -226,15 +226,17 @@ def psgn(x,t=".png"):
 		#return ''
 ### ############################################################################################################
 ### ############################################################################################################
-def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey='',youtubekey='',sourcetype='show'):
-	PlayerMethod=addst("core-player"); url=''; print "--DO A PLAYER SPLIT HERE--"; debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); 
+def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey=''):
+	debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); 
+	PlayerMethod=addst("core-player")
 	if   (PlayerMethod=='DVDPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_DVDPLAYER
 	elif (PlayerMethod=='MPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_MPLAYER
 	elif (PlayerMethod=='PAPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_PAPLAYER
 	else: PlayerMeth=xbmc.PLAYER_CORE_AUTO
 	play=xbmc.Player(PlayerMeth) ### xbmc.PLAYER_CORE_AUTO | xbmc.PLAYER_CORE_DVDPLAYER | xbmc.PLAYER_CORE_MPLAYER | xbmc.PLAYER_CORE_PAPLAYER
 	#play=xbmc.Player(xbmc.PLAYER_CORE_AUTO) ### xbmc.PLAYER_CORE_AUTO | xbmc.PLAYER_CORE_DVDPLAYER | xbmc.PLAYER_CORE_MPLAYER | xbmc.PLAYER_CORE_PAPLAYER
-	if len(streamUrl) > 10: url=streamUrl
+	if len(streamUrl) > 10: 
+		url=streamUrl
 	else: 
 		html=messupText(nolines(nURL(pageUrl)),True,True); 
 		if len(roomId)==0:
@@ -249,87 +251,63 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		if len(Name)==0:
 			try:    Name=re.compile("flashvars.roomName\s*=\s*'(.+?)';").findall(html)[0]
 			except: Name='Unknown'
-		## ### ## 
-		## ### ## 
-		## ### ## 
-		NeedToToggleDebug=False; #NeedToToggleDebug=True; 
-		if (len(url)==0) and (len(streamUrl)==0) and (len(streamkey)==0) and (len(youtubekey)==0):
-				if NeedToToggleDebug==True: DoTD(); #DoA("ToggleDebug"); 
-				url='rtmp://%s/%s' % ('66.55.92.79',roomId)
-				play.play(url)
-				xbmc.sleep(3000)
-				if NeedToToggleDebug==True: DoTD(); #DoA("ToggleDebug"); 
-				xbmcLogData=common._OpenFile(xbmcLogFile)
-				if "--DO A PLAYER SPLIT HERE--" in xbmcLogData: xbmcLogData=xbmcLogData.split("--DO A PLAYER SPLIT HERE--")[-1]
-				deb("test file",TPapp("-- player-test.txt")); 
-				common._SaveFile(TPapp("-- player-test.txt"),xbmcLogData); 
-				if "NetStream.Play.StreamNotFound" in xbmcLogData: deb("stream problem","could not find a stream."); 
-				elif "STRING:	Failed to play ; stream not found." in xbmcLogData: deb("stream problem","failed to play, stream not found."); 
-				try: sourcetype=re.compile('STRING:	{"message":"(.+?)"').findall(xbmcLogData)[-1]
-				except: debob("no message found"); return
-				deb("sourcetype",str(sourcetype));
-				if (sourcetype.lower()=='startyoutubemode'): 
-						debob('fetching youtubekey'); 
-						try: youtubekey=re.compile('"message":"startYoutubeMode",.*"videoID":"(.+?)"').findall(xbmcLogData)[-1]
-						except: debob("no youtubekey found"); return
-						deb("youtubekey",youtubekey); 
-				if (sourcetype.lower()=='startshowmode'):
-						#try: streamkey=re.compile('INFO:\s+Property:\s+<Name:\s+.*?,\s+STRING:\s+{"message":"startShowMode","name":".*?","active":\D*,"streamKey":"([0-9A-Za-z]+)","uuid":".*?","type":"\D*"}>').findall(xbmcLogData)[-1]
-						#try: streamkey=re.compile('"message":"startShowMode",.*"streamKey":"([0-9A-Za-z]+)"').findall(xbmcLogData)[-1]
-						try: streamkey=re.compile('"message":"startShowMode",.*"streamKey":"(.+?)"').findall(xbmcLogData)[-1]
-						except: pass
-						deb('streamkey',streamkey); 
-		if (sourcetype.lower()=='youtube') or (sourcetype.lower()=='startyoutubemode'):
-				deb("youtubekey",youtubekey); 
-				url='plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid=%s' % (youtubekey)
-				#url = 'plugin://plugin.video.youtube/?action=play_video&videoid=%s' % youtubekey
-		elif (sourcetype.lower()=='') or (sourcetype.lower()=='auto') or (sourcetype.lower()=='show') or (sourcetype.lower()=='streamup') or (sourcetype.lower()=='rtmp') or (sourcetype.lower()=='startshowmode'):
-				deb('streamkey',streamkey); 
-				url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
-		else: debob("unknown sourcetype and not enough info available."); return
-		## ### ## 
+		
+		
+		
+		url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
+		
+		#url='rtmp://%s/%s%s' % ('66.55.92.79/app',roomId,'.flv')
+		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/app',roomId,'.flv')
+		#url='rtmp://%s playpath=%s%s' % ('66.55.92.79:1935/'+roomSlug,roomId,'')
+		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/'+roomSlug,roomId,'')
+		#url='rtmp://%s?%s%s' % ('66.55.92.79:1935/'+roomSlug,roomId,'')
+		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/'+roomId,roomSlug,'')
+		#url='rtmp://%s?%s%s' % ('66.55.92.79:1935/'+roomId,roomSlug,'')
+		#url='rtmp://%s?%s%s' % ('66.55.92.79:1935/app',roomSlug,'')
+		#url='rtmp://%s?%s%s' % ('66.55.92.79:1935/app',roomId,'')
+		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/app',roomSlug,'')
+		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/app',roomId,'')
+		#url='rtmp://%s playpath=%s%s' % ('66.55.92.79:1935/app',roomId,'')
+		#url='rtmp://%s playpath=%s%s' % ('66.55.92.79:1935/live',roomId,'')
+		#url='rtmp://%s/%s%s' % ('66.55.92.79:1935/live',roomId,'')
+		#url='rtmp://%s/%s%s swfUrl=%s live=%s pageUrl=%s tcUrl=rtmp://%s/%s' % ('66.55.92.79',roomId,'','http://streamup.com/assets/StreamupVideoChat.swf','1',pageUrl,'66.55.92.79',roomId)
+		#url='rtmp://%s/%s%s playpath=%s swfUrl=%s live=%s pageUrl=%s tcUrl=rtmp://%s/%s' % ('66.55.92.79',roomId,'',roomId,'http://streamup.com/assets/StreamupVideoChat.swf','1',pageUrl,'66.55.92.79',roomId)
+		#url='rtmp://%s/%s%s playpath=%s swfUrl=%s live=%s pageUrl=%s tcUrl=rtmp://%s/%s' % ('66.55.92.79',roomId,'',roomId,'http://streamup.com/assets/StreamupEmbeddable.swf','1',pageUrl,'66.55.92.79',roomId)
+		#url='rtmp://%s/%s/%s playpath=%s swfUrl=%s live=%s pageUrl=%s' % ('66.55.92.79',roomId,'',roomId,'http://streamup.com/assets/StreamupEmbeddable.swf','1',pageUrl)
+		#url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,'158ac323a7267312370c')
+		##url='rtmp://%s/%s%s' % ('66.55.92.79',roomId,'')
 	## ### ## 
 	#try: _addon.resolve_url(url)
-	#except: pass
+	#except: t=''
 	#try: play.play(url)
-	#except: pass
+	#except: t=''
 	## ### ## 
 	deb('stream url',str(url)); 
 	infoLabels={"Studio":liVe,"ShowTitle":Name,"Title":Name,"cover_url":Thumb,'plot':plot}; 
 	li=xbmcgui.ListItem(Name,iconImage=Thumb,thumbnailImage=Thumb); 
 	li.setInfo(type="Video", infoLabels=infoLabels ); li.setProperty('IsPlayable', 'true'); 
 	try: _addon.resolve_url(url)
-	except: pass
+	except: t=''
 	try: play.play(url, li)
 	except:
 		try: play.play(url)
-		except: pass
-	#logging().Logger().setLevel(30); 
+		except: t=''
 	### ### ## 
 
-def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
-	if len(csrfToken)==0:
-		maipageHtml=nURL('https://streamup.com/',cookie_file=CookFile,load_cookie=False,save_cookie=True)
-		tokenParam='content="(.*?)" name="csrf-token"'
-		csrfToken=re.compile(tokenParam).findall(maipageHtml)[0]
-	## ### ## 
+def ListShows(Url,Page='',TyPE='js',idList='[]'):
 	debob(['Url',Url,'TyPE',TyPE])
 	if len(idList)==0: idList='[]'
 	if len(Page)==0: page=1
 	else: page=int(Page)
 	deb('page',str(page))
 	if len(Url)==0: return
-	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): 
-		#Url=mainSite+Url
-		Url=mainSite2+Url
+	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): Url=mainSite+Url
 	deb('Url',Url); 
-	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url ,cookie_file=CookFile,load_cookie=False,save_cookie=True,headers={'X-CSRF-Token':csrfToken,'X-Requested-With':'XMLHttpRequest'}); 
+	deb('CookFile',CookFile); 
+	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url,cookie_file=CookFile); 
 	else: 
 		##Url=Url.replace('http://','https://'); 
-		IdsList=eval(idList); IdLa=0; iLISTd=''; IdsListZ=eval(idList);
-		post_data={}
-		post_data=[('already_loaded_rooms[]', i) for i in IdsList]
-		print 'post_data',post_data
+		IdsList=eval(idList); IdLa=0; iLISTd=''; IdsListZ=eval(idList); deb('no of items in IdsList',str(len(IdsList))); 
 		for IdL in IdsList:
 			#if IdLa==0: iLISTd+=' '; IdLa=1
 			#if IdLa==0: iLISTd+='&'; IdLa=1
@@ -339,15 +317,20 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 		#	#iLISTd+=""+"already_loaded_rooms[]="+IdL+"&"
 		#	#iLISTd+=""+"already_loaded_rooms%5B%5D="+IdL+"&"
 		## ### ## 
-		UrlBB=Url +"?page="+str(page)+""#+str(iLISTd); 
+		UrlBB=Url+"?page="+str(page)+""#+str(iLISTd); 
 		debob(['UrlBB',UrlBB]); 
 		debob(['iLISTd',iLISTd]); 
 		debob(['idList',idList]); 
 		## ### ## 
 		
+		#post_data=[('already_loaded_rooms[]', i) for i in IdsList]; post_data.append(('page',str(page))); 
+		#post_data={'page':str(page),'already_loaded_rooms':str(idList)}; 
+		post_data={'page':str(page),'already_loaded_rooms':eval(idList)}; 
+		debob(['post_data',post_data]); 
 		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url},cookie_file=CookFile,load_cookie=True); 
-		html=nURL(UrlBB,method='post',form_data=post_data,headers={'Referer':Url,'X-CSRF-Token':csrfToken,'X-Requested-With':'XMLHttpRequest','Origin': 'https://streamup.com','Accept':'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q='},cookie_file=CookFile,load_cookie=True,save_cookie=True)
-
+		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url},cookie_file=CookFile,load_cookie=True); 
+		html=nURL(UrlBB,method='post',form_data=post_data,headers={'Referer':Url},cookie_file=CookFile,load_cookie=True); 
+		
 		
 		
 		#html=nURL(UrlBB,method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url}); 
@@ -366,8 +349,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 		##html=nURL(Url+"?page="+str(page)+"",method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms%5B%5D':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
-		#html=nURL(Url+"?page="+str(page),method='post',form_data=post_data:str(idList)},headers={'Referer':Url}
-
+		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		##html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		## ### ## 
@@ -443,7 +425,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 			if len(liVe) > 0: labs[u'title']=cFL(name+cFL(" ["+cFL(liVe,colorC)+"]",colorB),colorA); 
 			else: labs[u'title']=cFL(name,colorA); 
 			#plot+=CR+"Genres:  [COLOR purple]"+Genres2+"[/COLOR]"; #plot+="[CR]Year: [COLOR purple]"+year+"[/COLOR]"; #plot+="[CR]Status: [COLOR purple]"+status+"[/COLOR]"; #plot+="[CR]Number of Episodes: [COLOR purple]"+NoEps+"[/COLOR]"; 
-			pars={'roomid':roomId,'roomslug':roomSlug,'url':url,'title':name,'fimg':fimg,'type':TyPE,'live':liVe,'imdb_id':'','img':img,'mode':'PlayStreamUP','site':site,'section':section,'sourcetype':'auto'}; 
+			pars={'roomid':roomId,'roomslug':roomSlug,'url':url,'title':name,'fimg':fimg,'type':TyPE,'live':liVe,'imdb_id':'','img':img,'mode':'PlayStreamUP','site':site,'section':section}; 
 			if TyPE=='html|user': pars['mode']='ListShows'; pars['page']=''; pars['type']='html'; 
 			Clabs={'title':name,'year':'','url':url,'commonid':'','img':img,'fanart':fimg,'plot':labs[u'plot'],'todoparams':_addon.build_plugin_url(pars),'site':site,'section':section}; 
 			try: cMI=ContextMenu_Series(Clabs); 
@@ -453,7 +435,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 			except: pass
 	NextPage=str(int(page)+1); 
 	if (("page="+NextPage) in html) and (not TyPE=='js|featured'):
-		_addon.add_directory({'mode':'ListShows','site':site,'url':Url,'page':NextPage,'type':str(TyPE),'idlist':str(ListOfIds),'csrfToken':csrfToken},{'title':cFL('>> Next %s' % cFL(NextPage,colorA),colorB)},is_folder=True,fanart=fanartSite,img=psgn('next'))
+		_addon.add_directory({'mode':'ListShows','site':site,'url':Url,'page':NextPage,'type':str(TyPE),'idlist':str(ListOfIds)},{'title':cFL('>> Next %s' % cFL(NextPage,colorA),colorB)},is_folder=True,fanart=fanartSite,img=psgn('next'))
 	set_view('tvshows',view_mode=addst('tvshows-view')); eod()
 
 def Fav_List(site='',section='',subfav=''):
@@ -622,11 +604,11 @@ def mode_subcheck(mode='',site='',section='',url=''):
 	elif (mode=='SpecialMenu'): 	SpecialMenu(url)
 	elif (mode=='DevFeaturedMenu'): 		DevFeaturedMenu()
 	elif (mode=='BrowseMenu'): 					BrowseMenu()
-	elif (mode=='ListShows'): 		ListShows(url,addpr('page',''),addpr('type',''),addpr('idlist',''),addpr('csrfToken',''))
-	elif (mode=='BrowseCat'): 		ListShows("https://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
-	elif (mode=='BrowseCat2'): 		ListShows("https://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
+	elif (mode=='ListShows'): 		ListShows(url,addpr('page',''),addpr('type',''),addpr('idlist',''))
+	elif (mode=='BrowseCat'): 		ListShows("http://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
+	elif (mode=='BrowseCat2'): 		ListShows("http://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='Search'):				DoSearch(addpr('title',''),url)
-	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('subfav','title'),addpr('subfav','img'),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''),addpr('youtubeid',''),addpr('sourcetype','show'))
+	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('subfav','title'),addpr('subfav','img'),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''))
 	#
 	elif (mode=='FavoritesList'): Fav_List(site=site,section=section,subfav=addpr('subfav',''))
 	elif (mode=='About'): 				eod(); About()
