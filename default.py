@@ -227,7 +227,8 @@ def psgn(x,t=".png"):
 ### ############################################################################################################
 ### ############################################################################################################
 def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey='',youtubekey='',sourcetype='show'):
-	PlayerMethod=addst("core-player"); url=''; print "--DO A PLAYER SPLIT HERE--"; debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); 
+	PlayerMethod=addst("core-player"); url=''; print "--DO A PLAYER SPLIT HERE--"; debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); fimg=''; 
+	tempParams=_addon.queries; debob(['tempParams',tempParams]); 
 	if   (PlayerMethod=='DVDPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_DVDPLAYER
 	elif (PlayerMethod=='MPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_MPLAYER
 	elif (PlayerMethod=='PAPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_PAPLAYER
@@ -236,8 +237,8 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	#play=xbmc.Player(xbmc.PLAYER_CORE_AUTO) ### xbmc.PLAYER_CORE_AUTO | xbmc.PLAYER_CORE_DVDPLAYER | xbmc.PLAYER_CORE_MPLAYER | xbmc.PLAYER_CORE_PAPLAYER
 	if len(streamUrl) > 10: url=streamUrl
 	else: 
-		#print 'pageUrl',pageUrl
-		if pageUrl.startswith('/'): pageUrl='https://streamup.com%s'%pageUrl
+		if pageUrl.startswith('/'): pageUrl=mainSite2+pageUrl
+		deb('pageUrl',pageUrl); 
 		html=messupText(nolines(nURL(pageUrl)),True,True); 
 		if len(roomId)==0:
 			try:    roomId=re.compile("flashvars.roomId\s*=\s*'(.+?)';").findall(html)[0]
@@ -251,16 +252,18 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		if len(Name)==0:
 			try:    Name=re.compile("flashvars.roomName\s*=\s*'(.+?)';").findall(html)[0]
 			except: Name='Unknown'
+		try: fimg=re.compile("<div class='channelBgImageTiling' id='channelBgImage' style=\"background-image: url\('(.+?)'\);\">").findall(html)[0]
+		except: fimg=''
 		## ### ## 
 		## ### ## 
 		## ### ## 
-		NeedToToggleDebug=True; #NeedToToggleDebug=True; 
+		NeedToToggleDebug=False; NeedToToggleDebug=True; 
 		if (len(url)==0) and (len(streamUrl)==0) and (len(streamkey)==0) and (len(youtubekey)==0):
-				if NeedToToggleDebug==True: DoTD(); #DoA("ToggleDebug"); 
+				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug On ##
 				url='rtmp://%s/%s timeout=5' % ('66.55.92.79',roomId)
 				play.play(url)
 				xbmc.sleep(3000)
-				if NeedToToggleDebug==True: DoTD(); #DoA("ToggleDebug"); 
+				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug Off ##
 				xbmcLogData=common._OpenFile(xbmcLogFile)
 				if "--DO A PLAYER SPLIT HERE--" in xbmcLogData: xbmcLogData=xbmcLogData.split("--DO A PLAYER SPLIT HERE--")[-1]
 				deb("test file",TPapp("-- player-test.txt")); 
@@ -296,7 +299,8 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	#try: play.play(url)
 	#except: pass
 	## ### ## 
-	deb('stream url',str(url)); 
+	#pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey='',youtubekey='',sourcetype='show'
+	debob(",['pars', {'streamurl': '%s', 'roomslug': '%s', 'fimg': '%s', 'img': '%s', 'title': '%s', 'url': '%s', 'type': '%s', 'live': '%s', 'mode': 'PlayStreamUP', 'roomid': '%s'" % (str(url),str(roomSlug),str(fimg),str(Thumb),str(Name),str(pageUrl),str(addpr('type','')),str(liVe),str(roomId))); 
 	infoLabels={"Studio":liVe,"ShowTitle":Name,"Title":Name,"cover_url":Thumb,'plot':plot}; 
 	li=xbmcgui.ListItem(Name,iconImage=Thumb,thumbnailImage=Thumb); 
 	li.setInfo(type="Video", infoLabels=infoLabels ); li.setProperty('IsPlayable', 'true'); 
@@ -446,7 +450,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 			else: labs[u'title']=cFL(name,colorA); 
 			#plot+=CR+"Genres:  [COLOR purple]"+Genres2+"[/COLOR]"; #plot+="[CR]Year: [COLOR purple]"+year+"[/COLOR]"; #plot+="[CR]Status: [COLOR purple]"+status+"[/COLOR]"; #plot+="[CR]Number of Episodes: [COLOR purple]"+NoEps+"[/COLOR]"; 
 			pars={'roomid':roomId,'roomslug':roomSlug,'url':url,'title':name,'fimg':fimg,'type':TyPE,'live':liVe,'imdb_id':'','img':img,'mode':'PlayStreamUP','site':site,'section':section,'sourcetype':'auto'}; 
-			if TyPE=='html|user': pars['mode']='ListShows'; pars['page']=''; pars['type']='html'; 
+ 			if TyPE=='html|user': pars['mode']='ListShows'; pars['page']=''; pars['type']='html'; 
 			Clabs={'title':name,'year':'','url':url,'commonid':'','img':img,'fanart':fimg,'plot':labs[u'plot'],'todoparams':_addon.build_plugin_url(pars),'site':site,'section':section}; 
 			try: cMI=ContextMenu_Series(Clabs); 
 			except: pass
