@@ -299,15 +299,16 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 		maipageHtml=nURL('https://streamup.com/',cookie_file=CookFile,load_cookie=False,save_cookie=True)
 		tokenParam='content="(.*?)" name="csrf-token"'
 		csrfToken=re.compile(tokenParam).findall(maipageHtml)[0]
-
-
+	## ### ## 
 	debob(['Url',Url,'TyPE',TyPE])
 	if len(idList)==0: idList='[]'
 	if len(Page)==0: page=1
 	else: page=int(Page)
 	deb('page',str(page))
 	if len(Url)==0: return
-	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): Url=mainSite+Url
+	if (not mainSite in Url) and (not mainSite2 in Url) and (not mainSite3 in Url) and (not mainSite4 in Url): 
+		#Url=mainSite+Url
+		Url=mainSite2+Url
 	deb('Url',Url); 
 	if (page==1) or (len(Page)==0): IdsList=[]; html=nURL(Url ,cookie_file=CookFile,load_cookie=False,save_cookie=True,headers={'X-CSRF-Token':csrfToken,'X-Requested-With':'XMLHttpRequest'}); 
 	else: 
@@ -610,7 +611,7 @@ def mode_subcheck(mode='',site='',section='',url=''):
 	elif (mode=='BrowseMenu'): 					BrowseMenu()
 	elif (mode=='ListShows'): 		ListShows(url,addpr('page',''),addpr('type',''),addpr('idlist',''),addpr('csrfToken',''))
 	elif (mode=='BrowseCat'): 		ListShows("https://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
-	elif (mode=='BrowseCat2'): 		ListShows("http://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
+	elif (mode=='BrowseCat2'): 		ListShows("https://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='Search'):				DoSearch(addpr('title',''),url)
 	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('subfav','title'),addpr('subfav','img'),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''))
 	#
