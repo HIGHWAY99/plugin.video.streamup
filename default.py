@@ -300,7 +300,7 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	#except: pass
 	## ### ## 
 	#pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey='',youtubekey='',sourcetype='show'
-	debob(",['pars', {'streamurl': '%s', 'roomslug': '%s', 'fimg': '%s', 'img': '%s', 'title': '%s', 'url': '%s', 'type': '%s', 'live': '%s', 'mode': 'PlayStreamUP', 'roomid': '%s'" % (str(url),str(roomSlug),str(fimg),str(Thumb),str(Name),str(pageUrl),str(addpr('type','')),str(liVe),str(roomId))); 
+	debob(",['pars', {'streamurl': '%s', 'roomslug': '%s', 'fimg': '%s', 'img': '%s', 'title': '%s', 'url': '%s', 'type': '%s', 'live': '%s', 'mode': 'PlayStreamUP', 'roomid': '%s', 'sourcetype': '%s'}, " % (str(url),str(roomSlug),str(fimg),str(Thumb),str(Name).replace('[COLOR FFAAAAAA] [[COLOR FF777777]Live[/COLOR]][/COLOR]',''),str(pageUrl),str(addpr('type','')),str(liVe),str(roomId),str(sourcetype))); 
 	infoLabels={"Studio":liVe,"ShowTitle":Name,"Title":Name,"cover_url":Thumb,'plot':plot}; 
 	li=xbmcgui.ListItem(Name,iconImage=Thumb,thumbnailImage=Thumb); 
 	li.setInfo(type="Video", infoLabels=infoLabels ); li.setProperty('IsPlayable', 'true'); 
@@ -632,7 +632,7 @@ def mode_subcheck(mode='',site='',section='',url=''):
 	elif (mode=='BrowseCat'): 		ListShows("https://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='BrowseCat2'): 		ListShows("https://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='Search'):				DoSearch(addpr('title',''),url)
-	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('subfav','title'),addpr('subfav','img'),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''),addpr('youtubeid',''),addpr('sourcetype','show'))
+	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('title',''),addpr('img',''),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''),addpr('youtubeid',''),addpr('sourcetype','show'))
 	#
 	elif (mode=='FavoritesList'): Fav_List(site=site,section=section,subfav=addpr('subfav',''))
 	elif (mode=='About'): 				eod(); About()
