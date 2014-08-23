@@ -116,6 +116,16 @@ def psgn(x,t=".png"):
 			,'gaming': 				artp('browse_gaming') #d #s+""+t
 			,'music': 				artp('browse_music') #d #s+""+t
 			,'social': 				artp('browse_social') #artp('default_user') #d #s+""+t
+			,'browse my picks list': 			artp('list_mypicks')
+			,'browse local list': 				artp('list_local')
+			,'browse devs featured': 			artp('featured_dev')
+			,'browse featured': 					artp('featured_site')
+			,'search': 										artp('search_channels') #s+"L8Ifj8L"+t #L8Ifj8L #MTnRQJ3
+			,'search user': 							artp('search_people') #s+"L8Ifj8L"+t #MTnRQJ3
+			,'img_next':									artp('browse_next') #d #'http://kissanime.com/Content/images/next.png'
+			,'img_prev':									artp('browse_prev') #d #'http://kissanime.com/Content/images/previous.png'
+			,'next':											artp('browse_next') #d #'http://kissanime.com/Content/images/next.png'
+			,'prev':											artp('browse_prev') #d #'http://kissanime.com/Content/images/previous.png'
 			,'a': 		s+"OvFHLK2"+t
 			,'b': 		s+"ezem9mn"+t
 			,'c': 		s+"707ILz1"+t
@@ -187,8 +197,6 @@ def psgn(x,t=".png"):
 			,'latest updates': 						d #s+"E86Rnq5"+t
 			,'most popular': 							d #s+"DzFexnz"+t #N69lo3G
 			,'new anime': 								d #s+"wZN1olE"+t
-			,'search': 										artp('default_channel') #s+"L8Ifj8L"+t #L8Ifj8L #MTnRQJ3
-			,'search user': 							artp('default_user') #s+"L8Ifj8L"+t #MTnRQJ3
 			,'random anime': 							d #s+"Rjag7b3"+t
 			,'_': 												d #s+"bGMWifZ"+t
 			,'anime 2013': 								d #s+"4SgqERs"+t
@@ -207,10 +215,6 @@ def psgn(x,t=".png"):
 #			,'': 								s+""+t
 #			,'': 								s+""+t
 #			,'': 								s+""+t
-			,'img_next':									artp('browse_next') #d #'http://kissanime.com/Content/images/next.png'
-			,'img_prev':									artp('browse_prev') #d #'http://kissanime.com/Content/images/previous.png'
-			,'next':											artp('browse_next') #d #'http://kissanime.com/Content/images/next.png'
-			,'prev':											artp('browse_prev') #d #'http://kissanime.com/Content/images/previous.png'
 			###
 #			,'': 								s+""+t
 #			,'': 								s+""+t
@@ -579,10 +583,11 @@ def SectionMenu():
 	#splash.do_My_Splash(HowLong=5,resize=False); 
 	SpecialCODE=addst('special-code',''); LocalLists=[]; 
 	_addon.add_directory({'mode':'BrowseMenu','site':site},{'title':AFColoring('Browse')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
-	_addon.add_directory({'mode':'SpecialMenu','url':'http://raw.github.com/HIGHWAY99/plugin.video.streamup/master/lists/DevsFeaturedList.txt','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
+	_addon.add_directory({'mode':'BrowseCat2','site':site,'cat':'rooms','type':'js|featured'},{'title':AFColoring('Featured')},is_folder=True,fanart=fanartSite,img=psgn('browse featured'))
+	_addon.add_directory({'mode':'SpecialMenu','url':'http://raw.github.com/HIGHWAY99/plugin.video.streamup/master/lists/DevsFeaturedList.txt','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse devs featured'))
 	
-	LocalLists.append(['MyPicksList.txt','My Picks List','browse'])
-	LocalLists.append(['LocalList.txt','Local List','browse'])
+	LocalLists.append(['MyPicksList.txt','My Picks List','browse my picks list'])
+	LocalLists.append(['LocalList.txt','Local List','browse local list'])
 	#LocalLists.append(['','','browse'])
 	for (urlA,TiTLE,iMg) in LocalLists:
 		urlB=TPapp(urlA)
@@ -592,10 +597,9 @@ def SectionMenu():
 				_addon.add_directory({'mode':'SpecialMenu','url':urlA,'site':site},{'title':AFColoring(TiTLE)},is_folder=True,fanart=fanartSite,img=psgn(iMg))
 	
 	if SpecialCODE==ps('special-code'):
-		_addon.add_directory({'mode':'DevFeaturedMenu','site':site},{'title':AFColoring("Dev's Featured List[CR][Hard Coded]")},is_folder=True,fanart=fanartSite,img=psgn('browse'))
+		_addon.add_directory({'mode':'DevFeaturedMenu','site':site},{'title':AFColoring("Dev's Featured List[CR][Hard Coded]")},is_folder=True,fanart=fanartSite,img=psgn('browse devs featured'))
 	
-	_addon.add_directory({'mode':'BrowseCat2','site':site,'cat':'rooms','type':'js|featured'},{'title':AFColoring('Featured')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
-	_addon.add_directory({'mode':'Search','site':site,'url':'/search/'},{'title':AFColoring('Search')+cFL(' Channel',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search'))
+	_addon.add_directory({'mode':'Search','site':site,'url':'/search/'},{'title':AFColoring('Search')+cFL(' Channels',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search'))
 	_addon.add_directory({'mode':'Search','site':site,'url':'/search/_s_/users.js'},{'title':AFColoring('Search')+cFL(' People',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search user'))
 	#
 	#if SpecialCODE==ps('special-code'):
