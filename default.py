@@ -236,6 +236,8 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	#play=xbmc.Player(xbmc.PLAYER_CORE_AUTO) ### xbmc.PLAYER_CORE_AUTO | xbmc.PLAYER_CORE_DVDPLAYER | xbmc.PLAYER_CORE_MPLAYER | xbmc.PLAYER_CORE_PAPLAYER
 	if len(streamUrl) > 10: url=streamUrl
 	else: 
+		#print 'pageUrl',pageUrl
+		if pageUrl.startswith('/'): pageUrl='https://streamup.com%s'%pageUrl
 		html=messupText(nolines(nURL(pageUrl)),True,True); 
 		if len(roomId)==0:
 			try:    roomId=re.compile("flashvars.roomId\s*=\s*'(.+?)';").findall(html)[0]
@@ -252,10 +254,10 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		## ### ## 
 		## ### ## 
 		## ### ## 
-		NeedToToggleDebug=False; #NeedToToggleDebug=True; 
+		NeedToToggleDebug=True; #NeedToToggleDebug=True; 
 		if (len(url)==0) and (len(streamUrl)==0) and (len(streamkey)==0) and (len(youtubekey)==0):
 				if NeedToToggleDebug==True: DoTD(); #DoA("ToggleDebug"); 
-				url='rtmp://%s/%s' % ('66.55.92.79',roomId)
+				url='rtmp://%s/%s timeout=5' % ('66.55.92.79',roomId)
 				play.play(url)
 				xbmc.sleep(3000)
 				if NeedToToggleDebug==True: DoTD(); #DoA("ToggleDebug"); 
@@ -411,7 +413,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 				#debob(['url',url,'name',name,'img',img,'plot',plot])
 			elif TyPE=='js|featured':
 				#s="<div class='homeChannelsFeatured-\d+' data-roomSlug='(.*?)'><div id='(homeChannelsFeaturedTextLabel)'>(Featured)</div><h2 id='(homeChannelsFeaturedTextChannelName)'>"+'<a href="(.+?)">(.+?)</a></h2>'; 
-				na=1; nnn=[[na,na+1],[na+2,na+3]]; (name,liVe,plot)=(match[5],match[2],''); is_folder=True; 
+				na=1; nnn=[[na,na+1],[na+2,na+3]]; (name,liVe,plot)=(match[5],match[2],''); is_folder=False; 
 				(roomId,roomSlug)=('',match[0]); (url,img)=(match[4],artp('default_channel')); 
 				#for (nb,nc) in nnn:
 				#	if (len(name)==0) and (match[nb]=='homePersonUsername') and (len(match[nc]) > 0): name=match[nc]
