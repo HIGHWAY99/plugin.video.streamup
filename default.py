@@ -55,23 +55,17 @@ def About(head=''+cFL(SiteName,'blueviolet')+'',m=''):
 		m+=CR+'Site Name:  '+SiteName+CR+'Site Tag:  '+SiteTag+CR+'Site Domain:  '+mainSite+CR+'Site Icon:  '+iconSite+CR+'Site Fanart:  '+fanartSite
 		m+=CR+'Age:  Please make sure you are of a valid age to watch the material shown.'
 		#m+=CR+CR+'Known Hosts for Videos:  '
-		#m+=CR+'* TrollVid'
-		#m+=CR+'* UploadCrazy'
-		m+=CR+CR+'Features:  '
-		m+=CR+'* Browse Shows'
-		m+=CR+'* Browse Episodes'
-		m+=CR+'* Browse Host Links'
-		m+=CR+'* Play Videos with UrlResolver'
-		#m+=CR+'* Download Videos with UrlResolver'
-		m+=CR+'* Optional MetaData where available.'
+		##m+=CR+'* TrollVid'
+		##m+=CR+'* UploadCrazy'
+		#m+=CR+CR+'Features:  '
+		#m+=CR+'* Browse Shows'
+		#m+=CR+'* Browse Episodes'
+		#m+=CR+'* Browse Host Links'
+		#m+=CR+'* Play Videos with UrlResolver'
+		##m+=CR+'* Download Videos with UrlResolver'
+		#m+=CR+'* Optional MetaData where available.'
 		#m+=CR+'* MetaData for Shows and 1st Season Episodes where data is available.'
 		#m+=CR+'* MetaData auto-disabled for Anime List - ALL.  This is to prevent hammering with the huge list of nearly 400 shows.'
-		m+=CR+CR+'Handled Sites:  '
-		m+=CR+'* http://watchseries.lt'
-		m+=CR+'* http://watchseries.sx'
-		m+=CR+'* http://watchseries.ag'
-		m+=CR+'* http://spainseries.lt (SPANISH)'
-		m+=CR+'* http://watchseries.to'
 		m+=CR+CR+'Notes:  '
 		#m+=CR+'* '
 		#m+=CR+'* '
@@ -93,7 +87,7 @@ def spBeforeSplit(t,ss):
 	if ss in t: t=t.split(ss)[0]
 	return t
 def FixImage(img):
-	#try: r1,r2=re.compile('(http://www.animefate.com/images/.+?)-\d+x\d+(\.[jpg|png|gif]+)').findall(img)[0]; img=r1+r2; 
+	#try: 
 	#except: pass
 	return img
 def AFColoring(t): 
@@ -116,6 +110,7 @@ def psgn(x,t=".png"):
 			,'gaming': 				artp('browse_gaming') #d #s+""+t
 			,'music': 				artp('browse_music') #d #s+""+t
 			,'social': 				artp('browse_social') #artp('default_user') #d #s+""+t
+			,'history 101': 	artp('history_101')
 			,'browse my picks list': 			artp('list_mypicks')
 			,'browse local list': 				artp('list_local')
 			,'browse devs featured': 			artp('featured_dev')
@@ -297,6 +292,36 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 				url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
 		else: debob("unknown sourcetype and not enough info available."); return
 		## ### ## 
+		sDB=[]; 
+		#'pageurl, title, streamtype, live, thumb, fanart, roomid, roomslug, sourcetype, streamurl, streamkey, 
+		#youtubeposition, youtubecurrentindex, youtubeduration, youtubeplaylistcount, youtubevideoid, youtubeuuid, 
+		#plot, timestampyear, timestampmonth, timestampday'
+		##pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey='',youtubekey='',sourcetype='show'
+		### 'UPDATE shows SET showid = "%s" WHERE (url == "%s")' % (  ShowID,url )
+		GroupB=(  urllib.quote_plus(str(pageUrl)),urllib.quote_plus(str(Name)),urllib.quote_plus(str(liVe)),urllib.quote_plus(str(Thumb)),urllib.quote_plus(str(roomId)),urllib.quote_plus(str(roomSlug)),urllib.quote_plus(str(plot)),str(datetime.date.today().year),str(datetime.date.today().month),str(datetime.date.today().day)  )
+		#sDB.append( 'INSERT OR REPLACE INTO channels ('+ps('db channels tags2a')+') VALUES ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")' % GroupB )
+		sDB.append( 'INSERT INTO channels ('+ps('db channels tags2a')+') VALUES ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")' % GroupB )
+		GroupB=(  urllib.quote_plus(str(sourcetype.lower())),urllib.quote_plus(str(pageUrl))  )
+		sDB.append( 'UPDATE channels SET streamtype = "%s" WHERE (pageurl == "%s")' % GroupB )
+		if len(fimg) > 0:
+			GroupB=(  urllib.quote_plus(str(fimg)),urllib.quote_plus(str(pageUrl))  )
+			sDB.append( 'UPDATE channels SET fanart = "%s" WHERE (pageurl == "%s")' % GroupB )
+		if len(streamkey) > 0:
+			GroupB=(  urllib.quote_plus(str(streamkey)),urllib.quote_plus(str(pageUrl))  )
+			sDB.append( 'UPDATE channels SET streamkey = "%s" WHERE (pageurl == "%s")' % GroupB )
+		if len(youtubekey) > 0:
+			GroupB=(  urllib.quote_plus(str(youtubekey)),urllib.quote_plus(str(pageUrl))  )
+			sDB.append( 'UPDATE channels SET youtubevideoid = "%s" WHERE (pageurl == "%s")' % GroupB )
+		if len(streamUrl) > 0:
+			GroupB=(  urllib.quote_plus(str(streamUrl)),urllib.quote_plus(str(pageUrl))  )
+			sDB.append( 'UPDATE channels SET streamurl = "%s" WHERE (pageurl == "%s")' % GroupB )
+		elif len(url) > 0:
+			GroupB=(  urllib.quote_plus(str(url)),urllib.quote_plus(str(pageUrl))  )
+			sDB.append( 'UPDATE channels SET streamurl = "%s" WHERE (pageurl == "%s")' % GroupB )
+		debob(sDB); 
+		do_database(sDB); 
+		#do_database_test(sDB); 
+		## ### ## 
 	## ### ## 
 	#try: _addon.resolve_url(url)
 	#except: pass
@@ -316,6 +341,48 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		except: pass
 	#logging().Logger().setLevel(30); 
 	### ### ## 
+
+def History101():
+	tab1rows=ps('db channels tags0c'); 
+	try:
+		r=get_database_all('SELECT %s FROM channels' % (tab1rows)); 
+	except: pass
+	if r:
+		if len(r) > 0:
+			iC=len(r); i=0; 
+			HistoryCountLimit="20"; #HistoryCountLimit=addst("history101-count"); 
+			for k in r[::-1]:
+				try:
+					debob(['k',k]); 
+					cMI=[]; pars={}; labs={}; pageurl=''; url=''; title=''; liVe=''; plot=''; streamtype=''; roomslug=''; roomid=''; img=iconSite; fanart=fanartSite; 
+					try: pageurl=urllib.unquote_plus(str(k[0])); 
+					except: pass
+					try: title=urllib.unquote_plus(str(k[1])); 
+					except: pass
+					try: streamtype=urllib.unquote_plus(str(k[2])); 
+					except: pass
+					try: img=urllib.unquote_plus(str(k[4])); 
+					except: pass
+					try: fanart=urllib.unquote_plus(str(k[5])); 
+					except: pass
+					try: roomid=urllib.unquote_plus(str(k[6])); 
+					except: pass
+					try: roomslug=urllib.unquote_plus(str(k[7])); 
+					except: pass
+					try: url=urllib.unquote_plus(str(k[9])); debob(['url',url]); 
+					except: pass
+					try: labs[u'plot']=urllib.unquote_plus(str(k[17])); 
+					except: labs[u'plot']=''
+					labs[u'title']=cFL(title,colorA); 
+					if (len(liVe) > 0) and (not str(liVe).lower()=='none'): labs[u'title']=cFL(title+cFL(" ["+cFL(liVe,colorC)+"]",colorB),colorA); 
+					pars={'streamurl':str(url),'roomslug':str(roomslug),'fimg':str(fanart),'img':str(img),'title':str(title),'url':str(pageurl),'type':'','live':'History','mode':'PlayStreamUP','roomid':str(roomid),'sourcetype':''}; 
+					if (len(url) > 0) and (not str(url).lower()=='none'):
+						try: _addon.add_directory(pars,labs,is_folder=False,fanart=fanart,img=img,contextmenu_items=cMI,total_items=iC,context_replace=False); i+=1; 
+						except: pass
+					if not (HistoryCountLimit=="ALL") and (len(HistoryCountLimit) > 0):
+						if i > (int(HistoryCountLimit)-1): break
+				except: pass
+	set_view('tvshows',view_mode=addst('tvshows-view')); eod()
 
 def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 	if len(csrfToken)==0:
@@ -461,6 +528,21 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 			debob(['pars',pars,'labs',labs]); 
 			try: _addon.add_directory(pars,labs,is_folder=is_folder,fanart=fimg,img=img,contextmenu_items=cMI,total_items=iC,context_replace=False)
 			except: pass
+			## ### ## 
+			if is_folder==False:
+				sDB=[]; 
+				#'pageurl, title, streamtype, live, thumb, fanart, roomid, roomslug, sourcetype, streamurl, streamkey, 
+				#youtubeposition, youtubecurrentindex, youtubeduration, youtubeplaylistcount, youtubevideoid, youtubeuuid, 
+				#plot, timestampyear, timestampmonth, timestampday'
+				#'"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s"'
+				if url.startswith('/'): url=mainSite2+url
+				GroupB=(  urllib.quote_plus(str(url)),urllib.quote_plus(str(name)),urllib.quote_plus(str(liVe)),urllib.quote_plus(str(img)),urllib.quote_plus(str(roomId)),urllib.quote_plus(str(roomSlug)),urllib.quote_plus(str(plot)),str(datetime.date.today().year),str(datetime.date.today().month),str(datetime.date.today().day)  )
+				#sDB.append( 'INSERT OR REPLACE INTO channels ('+ps('db channels tags1a')+') VALUES ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")' % GroupB )
+				sDB.append( 'INSERT INTO channels ('+ps('db channels tags1a')+') VALUES ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")' % GroupB )
+				debob(sDB); 
+				do_database(sDB); 
+				#do_database_test(sDB); 
+			## ### ## 
 	NextPage=str(int(page)+1); 
 	if (("page="+NextPage) in html) and (not TyPE=='js|featured'):
 		_addon.add_directory({'mode':'ListShows','site':site,'url':Url,'page':NextPage,'type':str(TyPE),'idlist':str(ListOfIds),'csrfToken':csrfToken},{'title':cFL('>> Next %s' % cFL(NextPage,colorA),colorB)},is_folder=True,fanart=fanartSite,img=psgn('next'))
@@ -579,6 +661,7 @@ def BrowseMenu():
 	set_view('list',view_mode=addst('default-view')); eod()
 	##
 def SectionMenu():
+	common.check_database() #Checks rather the Database needs initialized or updated.
 	#import splash_highway as splash; #splash.do_My_Splash(_addon.get_fanart(),2,False); 
 	#splash.do_My_Splash(HowLong=5,resize=False); 
 	SpecialCODE=addst('special-code',''); LocalLists=[]; 
@@ -601,6 +684,8 @@ def SectionMenu():
 	
 	_addon.add_directory({'mode':'Search','site':site,'url':'/search/'},{'title':AFColoring('Search')+cFL(' Channels',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search'))
 	_addon.add_directory({'mode':'Search','site':site,'url':'/search/_s_/users.js'},{'title':AFColoring('Search')+cFL(' People',colorB)},is_folder=True,fanart=fanartSite,img=psgn('search user'))
+	_addon.add_directory({'mode':'History101','site':site,'url':''},{'title':AFColoring('History')+cFL(' 101',colorB)},is_folder=True,fanart=fanartSite,img=psgn('history 101'))
+	
 	#
 	#if SpecialCODE==ps('special-code'):
 	#_addon.add_directory({'mode':'FavoritesList','site':site,'section':section             },{'title':cFL(ps('WhatRFavsCalled'),colorA)+cFL(addst('fav.tv.1.name'),colorB)},fanart=fanartSite,img=psgn('favorites 1'))
@@ -636,6 +721,7 @@ def mode_subcheck(mode='',site='',section='',url=''):
 	elif (mode=='BrowseCat'): 		ListShows("https://streamup.com/rooms/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='BrowseCat2'): 		ListShows("https://streamup.com/%s.js" % addpr('cat',''),addpr('page',''),addpr('type',''),addpr('idlist',''))
 	elif (mode=='Search'):				DoSearch(addpr('title',''),url)
+	elif (mode=='History101'):		History101()
 	elif (mode=='PlayStreamUP'): 				PlayStreamUP(url,addpr('title',''),addpr('img',''),addpr('roomid',''),addpr('roomslug',''),addpr('plot',''),addpr('live',''),addpr('streamurl',''),addpr('streamkey',''),addpr('youtubeid',''),addpr('sourcetype','show'))
 	#
 	elif (mode=='FavoritesList'): Fav_List(site=site,section=section,subfav=addpr('subfav',''))

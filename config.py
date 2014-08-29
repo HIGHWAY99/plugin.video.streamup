@@ -85,6 +85,21 @@ def ps(x):
 			#,'ii': '' # 
 			#,'fi': '' # 
 			#,'': ''
+			,'db filename': xbmc.translatePath(os.path.join('special://database','streamup.db'))
+			,'db channels tags0a': 'pageurl, title, streamtype, live, thumb, fanart, roomid, roomslug, sourcetype, streamurl, streamkey, youtubeposition, youtubecurrentindex, youtubeduration, youtubeplaylistcount, youtubevideoid, youtubeuuid, plot, timestampyear, timestampmonth, timestampday'
+			,'db channels tags0b': '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s"'
+			,'db channels tags0c': 'pageurl,title,streamtype,live,thumb,fanart,roomid,roomslug,sourcetype,streamurl,streamkey,youtubeposition,youtubecurrentindex,youtubeduration,youtubeplaylistcount,youtubevideoid,youtubeuuid,plot,timestampyear,timestampmonth,timestampday'
+			,'db channels tags1a': 'pageurl, title, live, thumb, roomid, roomslug, plot, timestampyear, timestampmonth, timestampday'
+			,'db channels tags1b': '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s"'
+			,'db channels tags2a': 'pageurl, title, live, thumb, roomid, roomslug, plot, timestampyear, timestampmonth, timestampday'
+			,'db channels tags2c': 'pageurl, title, streamtype, live, thumb, fanart, roomid, roomslug, sourcetype, streamurl, streamkey, youtubeposition, youtubecurrentindex, youtubeduration, youtubeplaylistcount, youtubevideoid, youtubeuuid, plot, timestampyear, timestampmonth, timestampday'
+			#,'': ''
+			#,'': ''
+			#,'': ''
+			#,'': ''
+			#,'': ''
+			#,'': ''
+			#,'': ''
 			,'ReferalMsg': 'My XBMC-HUB Refferal Code - http://www.xbmchub.com/forums/register.php?referrerid=15468  [CR]Please use it to register if you don\'t have an account.  It not\'s not much but it can help me out.  '
 			,'WhatRFavsCalled': 'Favs: '
 		}[x]

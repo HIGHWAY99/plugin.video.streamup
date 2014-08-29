@@ -267,11 +267,10 @@ def nURL(url,method='get',form_data={},headers={},html='',proxy='',User_Agent=''
 		except Exception,e: debob(['Exception',e]); html=dhtml
 		except: html=dhtml
 	elif method.lower()=='post':
-		#try: 
-		html=net.http_POST(url,form_data=form_data,headers=headers).content #,compression=False
-		#except urllib2.HTTPError,e: debob(['urllib2.HTTPError',e]); html=dhtml
-		#except Exception,e: debob(['Exception',e]); html=dhtml
-		#except: html=dhtml
+		try: html=net.http_POST(url,form_data=form_data,headers=headers).content #,compression=False
+		except urllib2.HTTPError,e: debob(['urllib2.HTTPError',e]); html=dhtml
+		except Exception,e: debob(['Exception',e]); html=dhtml
+		except: html=dhtml
 	elif method.lower()=='head':
 		try: html=net.http_HEAD(url,headers=headers).content
 		except urllib2.HTTPError,e: debob(['urllib2.HTTPError',e]); html=dhtml
@@ -1206,11 +1205,137 @@ def DoSC2(a,Id): xbmc.executebuiltin("SendClick(%s,%s)" % (str(a),str(Id)))
 def DoStopScript(e): xbmc.executebuiltin("StopScript(%s)" % str(e))
 def DoTD(): xbmc.executebuiltin("ToggleDebug")
 
+### ############################################################################################################
+### ############################################################################################################
+##### SQL #####
+try:    from sqlite3   import dbapi2 as orm; dbMethod="sqlite3";   deb("SQL Method","sqlite3"); 
+except: from pysqlite2 import dbapi2 as orm; dbMethod="pysqlite2"; deb("SQL Method","pysqlite2"); 
+DB_DIR=ps('db filename'); CorrectValueForInitDatabase="1"; 
+def init_database():
+	try:
+		deb('Building Database',DB_DIR); s=[]; db=orm.connect(DB_DIR); 
+		#pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',
+		#streamUrl='',streamkey='',youtubekey='',sourcetype='show'
+		s.append('CREATE TABLE IF NOT EXISTS channels (pageurl VARCHAR(255) UNIQUE, title TEXT, streamtype VARCHAR(30), live VARCHAR(30), thumb TEXT, fanart TEXT, roomid VARCHAR(50), roomslug VARCHAR(50), sourcetype VARCHAR(30), streamurl VARCHAR(255), streamkey VARCHAR(40), youtubeposition VARCHAR(20), youtubecurrentindex VARCHAR(20), youtubeduration VARCHAR(20), youtubeplaylistcount VARCHAR(20), youtubevideoid VARCHAR(40), youtubeuuid VARCHAR(20), plot BLOB, timestampyear VARCHAR(4), timestampmonth VARCHAR(2), timestampday VARCHAR(2))')
+		##pageurl, title, streamtype, live, thumb, fanart, roomid, roomslug, sourcetype, streamurl, streamkey, youtubeposition, youtubecurrentindex, youtubeduration, youtubeplaylistcount, youtubevideoid, youtubeuuid, plot, timestampyear, timestampmonth, timestampday
+		
+		#s.append('CREATE TABLE IF NOT EXISTS shows (url VARCHAR(255) UNIQUE, title TEXT, year VARCHAR(10), img TEXT, fanart TEXT, imdbnum TEXT, plot BLOB, timestampyear TEXT, timestampmonth TEXT, timestampday TEXT, visited BOOLEAN, isfav TEXT, fav1 BOOLEAN, fav2 BOOLEAN, fav3 BOOLEAN, fav4 BOOLEAN, showid VARCHAR(10))')
+		#s.append('CREATE TABLE IF NOT EXISTS watched (url VARCHAR(255) UNIQUE, title TEXT, episode TEXT, timestampyear TEXT, timestampmonth TEXT, timestampday TEXT)')
+		#s.append('CREATE TABLE IF NOT EXISTS visited (url VARCHAR(255) UNIQUE, title TEXT, episode TEXT, timestampyear TEXT, timestampmonth TEXT, timestampday TEXT, img TEXT, fanart TEXT)')
+		#s.append('CREATE TABLE IF NOT EXISTS favs1 (url VARCHAR(255) UNIQUE)')
+		#s.append('CREATE TABLE IF NOT EXISTS favs2 (url VARCHAR(255) UNIQUE)')
+		#s.append('CREATE TABLE IF NOT EXISTS favs3 (url VARCHAR(255) UNIQUE)')
+		#s.append('CREATE TABLE IF NOT EXISTS favs4 (url VARCHAR(255) UNIQUE)')
+		##s.append('ALTER TABLE shows ADD showid VARCHAR(10)')
+		for t in s:
+			try: deb("db command",t); db.execute(t); 
+			except Exception,e: debob(['Exception',e])
+			except: pass
+	except Exception,e: debob(['Exception',e])
+	except: pass
+	try: db.commit(); db.close(); 
+	except Exception,e: debob(['Exception',e])
+	except: pass
+	addstv("init_database",CorrectValueForInitDatabase); 
+def check_database():
+	if not addst("init_database")==CorrectValueForInitDatabase:
+		try:
+			init_database(); 
+		except: pass
+	elif os.path.isfile(DB_DIR)==True: print "Database File Found: "+DB_DIR; 
+	else: print "Unable to locate Database File"; init_database(); 
+#check_database()
+
+def do_database_test(CoMMaNDS):
+	#try:
+		db=orm.connect(DB_DIR); 
+		for t in CoMMaNDS:
+			#try:
+				db.execute(t)
+			#except: pass
+	#except: pass
+	#try:
+		db.commit(); db.close(); 
+	#except: pass
+
+def do_database(CoMMaNDS):
+	try:
+		db=orm.connect(DB_DIR); 
+		for t in CoMMaNDS:
+			try:
+				db.execute(t)
+			except: pass
+	except: pass
+	try:
+		db.commit(); db.close(); 
+	except: pass
+
+def do_database2(CoMMaNDS): # [ ["",(..., ..., ...)],["",""] ]
+	try:
+		db=orm.connect(DB_DIR); 
+		for t,s in CoMMaNDS:
+			try:
+				db.execute(t.replace('?','%s'),s)
+			except: pass
+	except: pass
+	try:
+		db.commit(); db.close(); 
+	except: pass
+
+def get_database_all(CoMMaND):
+	#try:
+	db=orm.connect(DB_DIR); 
+	db.execute(CoMMaND)
+	results=db.execute(CoMMaND).fetchall()
+	#except: pass
+	try:
+		#db.commit(); 
+		db.close(); 
+		try:
+			if not result: return []
+			if result==None: return []
+		except: pass
+		return results
+	except: return []
+
+def get_database_1st(CoMMaND):
+	try:
+		db=orm.connect(DB_DIR); 
+		result=db.execute(CoMMaND).fetchone()
+	except: pass
+	try:
+		#db.commit(); 
+		db.close(); 
+		try:
+			if not result: return []
+			if result==None: return []
+		except: pass
+		return result
+	except: return []
+
+def get_database_1st_s(CoMMaND):
+	try:
+		db=orm.connect(DB_DIR); 
+		result=db.execute(CoMMaND).fetchone()
+	except: pass
+	try:
+		#db.commit(); 
+		db.close(); 
+		try:
+			if not result: return ""
+			if result==None: return ""
+		except: pass
+		return result
+	except: return ""
+
+##### /\
+### ############################################################################################################
+### ############################################################################################################
 
 
 
-
-
+### ############################################################################################################
+### ############################################################################################################
 
 
 ### ############################################################################################################
