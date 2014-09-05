@@ -23,15 +23,15 @@
 		<setting visible="false" id="links-view"   	 type="number" label="Links"              	 default="50"   enable="!eq(-6,false)"/>
 		<setting visible="false" id="anime-view"   	 type="number" label="Anime"              	 default="515"  enable="!eq(-7,false)"/>
 	</category>
-	<category label="Downloads">
+	<!-- category label="Downloads">
 		<setting visible="true" id="download_method"    	 		 type="labelenum" label="Number of Pages" values="Progress|ProgressBG|Test|Hidden|jDownloader (StreamURL)|jDownloader (Link)"             default="Hidden"/>
 		<setting visible="true" id="download_folder_default" 			type="folder" label="Download Folder (Default)"      	default="" />
 		<setting visible="false" id="download_folder_anime" 			type="folder" label="Download Folder (Animes)"      	default="" />
 		<setting visible="false" id="download_folder_movies" 			type="folder" label="Download Folder (Movies)"      	default="" />
 		<setting visible="false" id="download_folder_tv" 					type="folder" label="Download Folder (TV)    "      	default="" />
 		<setting visible="true" id="download_folder_wallpapers" 	type="folder" label="Download Folder (Wallpapers)  "  default="" />
-	</category>
-	<category label="Favorites">
+	</category-->
+	<!--category label="Favorites">
 		<setting visible="true" type="text" default=""   id="fav.tv.1.name"  label="Favorites  1: Name" />
 		<setting visible="true" type="text" default="2"  id="fav.tv.2.name"  label="Favorites  2: Name" />
 		<setting visible="true" type="text" default="3"  id="fav.tv.3.name"  label="Favorites  3: Name" />
@@ -81,13 +81,13 @@
 		<setting visible="false" type="text" default="10" id="fav.live.10.name" label="Favorites 10: Name" />
 		<setting visible="false" type="text" default="11" id="fav.live.11.name" label="Favorites 11: Name" />
 		<setting visible="false" id="live-favorites-clear-enable" type="bool"   label="  \/  ( Dummy Proofing )" default="false"/>
-	</category>
+	</category-->
 	<category label="Context Menu Items">
 		<setting visible="true" id="CMI_ShowInfo" 								type="bool" label="Show Information" 						default="true" />
 		<setting visible="false" id="CMI_FindAirDates" 						type="bool" label="Find Air Dates" 							default="false" />
 		<setting visible="false" id="CMI_RefreshMetaData" 					type="bool" label="Refresh MetaData" 						default="false" />
 		<setting visible="false" id="CMI_ChangeFanart" 						type="bool" label="Change Fanart" 							default="true" />
-		<setting visible="true" id="CMI_DownloadWallpaper" 				type="bool" label="Download Wallpaper" 					default="true" />
+		<setting visible="false" id="CMI_DownloadWallpaper" 				type="bool" label="Download Wallpaper" 					default="true" />
 		<setting visible="false" id="CMI_SearchKissAnime" 					type="bool" label="Search KissAnime" 						default="false" />
 		<setting visible="false" id="CMI_SearchSolarMovieso" 			type="bool" label="Search SolarMovie.so" 				default="false" />
 		<setting visible="false" id="CMI_Search1Channel" 					type="bool" label="Search 1Channel" 						default="false" />

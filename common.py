@@ -789,17 +789,17 @@ def ContextMenu_LiveStreams(labs={},contextMenuItems=[]):
 	except: section=addpr('section','')
 	if tfalse(addst("CMI_ShowInfo"))==True: contextMenuItems.append(('Stream Info',ps('cMI.showinfo.url')))
 	if labs=={}: return contextMenuItems
-	try:
-		WRFC=ps('WhatRFavsCalled')
-		LB=DoLabs2LB(labs); LB['mode']='cFavoritesAdd'; P1='XBMC.RunPlugin(%s)'
-		LB['subfav']= ''; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.1.name'),Pars))
-		LB['subfav']='2'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.2.name'),Pars))
-		LB['subfav']='3'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.3.name'),Pars))
-		LB['subfav']='4'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.4.name'),Pars))
-		LB['subfav']='5'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.5.name'),Pars))
-		LB['subfav']='6'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.6.name'),Pars))
-		LB['subfav']='7'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.7.name'),Pars))
-	except: pass
+	#try:
+	#	WRFC=ps('WhatRFavsCalled')
+	#	LB=DoLabs2LB(labs); LB['mode']='cFavoritesAdd'; P1='XBMC.RunPlugin(%s)'
+	#	LB['subfav']= ''; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.1.name'),Pars))
+	#	#LB['subfav']='2'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.2.name'),Pars))
+	#	#LB['subfav']='3'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.3.name'),Pars))
+	#	#LB['subfav']='4'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.4.name'),Pars))
+	#	#LB['subfav']='5'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.5.name'),Pars))
+	#	#LB['subfav']='6'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.6.name'),Pars))
+	#	#LB['subfav']='7'; Pars=P1 % _addon.build_plugin_url(LB); contextMenuItems.append((WRFC+addst('fav.tv.7.name'),Pars))
+	#except: pass
 
 	
 	

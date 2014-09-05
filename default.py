@@ -234,6 +234,16 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	else: PlayerMeth=xbmc.PLAYER_CORE_AUTO
 	play=xbmc.Player(PlayerMeth) ### xbmc.PLAYER_CORE_AUTO | xbmc.PLAYER_CORE_DVDPLAYER | xbmc.PLAYER_CORE_MPLAYER | xbmc.PLAYER_CORE_PAPLAYER
 	#play=xbmc.Player(xbmc.PLAYER_CORE_AUTO) ### xbmc.PLAYER_CORE_AUTO | xbmc.PLAYER_CORE_DVDPLAYER | xbmc.PLAYER_CORE_MPLAYER | xbmc.PLAYER_CORE_PAPLAYER
+	## ### ## 
+	#url='rtmp://%s/%s' % ('66.55.92.79',roomId)
+	#try: _addon.resolve_url(url)
+	#except: pass
+	#try: play.play(url)
+	#except:
+	#	try: play.play(url)
+	#	except: pass
+	#return
+	## ### ## 
 	if len(streamUrl) > 10: url=streamUrl
 	else: 
 		if pageUrl.startswith('/'): pageUrl=mainSite2+pageUrl
@@ -260,8 +270,13 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 		if (len(url)==0) and (len(streamUrl)==0) and (len(streamkey)==0) and (len(youtubekey)==0):
 				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug On ##
 				url='rtmp://%s/%s timeout=5' % ('66.55.92.79',roomId)
+				#url='rtmp://%s/%s timeout=9' % ('66.55.92.79',roomId)
+				#url='rtmp://%s/%s' % ('66.55.92.79',roomId)
 				play.play(url)
+				#xbmc.sleep(3000*4)
 				xbmc.sleep(3000)
+				try: play.stop()
+				except: pass
 				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug Off ##
 				xbmcLogData=common._OpenFile(xbmcLogFile)
 				if "--DO A PLAYER SPLIT HERE--" in xbmcLogData: xbmcLogData=xbmcLogData.split("--DO A PLAYER SPLIT HERE--")[-1]
@@ -333,6 +348,7 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	infoLabels={"Studio":liVe,"ShowTitle":Name,"Title":Name,"cover_url":Thumb,'plot':plot}; 
 	li=xbmcgui.ListItem(Name,iconImage=Thumb,thumbnailImage=Thumb); 
 	li.setInfo(type="Video", infoLabels=infoLabels ); li.setProperty('IsPlayable', 'true'); 
+	if play.isPlaying(): return
 	try: _addon.resolve_url(url)
 	except: pass
 	try: play.play(url, li)
@@ -523,7 +539,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 			pars={'roomid':roomId,'roomslug':roomSlug,'url':url,'title':name,'fimg':fimg,'type':TyPE,'live':liVe,'imdb_id':'','img':img,'mode':'PlayStreamUP','site':site,'section':section,'sourcetype':'auto'}; 
  			if TyPE=='html|user': pars['mode']='ListShows'; pars['page']=''; pars['type']='html'; 
 			Clabs={'title':name,'year':'','url':url,'commonid':'','img':img,'fanart':fimg,'plot':labs[u'plot'],'todoparams':_addon.build_plugin_url(pars),'site':site,'section':section}; 
-			try: cMI=ContextMenu_Series(Clabs); 
+			try: cMI=ContextMenu_LiveStreams(Clabs); 
 			except: pass
 			debob(['pars',pars,'labs',labs]); 
 			try: _addon.add_directory(pars,labs,is_folder=is_folder,fanart=fimg,img=img,contextmenu_items=cMI,total_items=iC,context_replace=False)
