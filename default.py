@@ -460,34 +460,38 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms%5B%5D':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'already_loaded_rooms[]':str(idList)},headers={'Referer':Url})
 		#html=nURL(Url+"?page="+str(page),method='post',form_data=post_data:str(idList)},headers={'Referer':Url}
-
+		
 		#html=nURL(Url+"?page="+str(page),method='post',form_data={'page':str(page),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		##html=nURL(Url+"?page="+str(page)+""+str(iLISTd),method='post',form_data={'page':str(page),'already_loaded_rooms[]':str(idList),'already_loaded_rooms':str(idList)},headers={'Referer':Url})
 		## ### ## 
 	html=messupText(nolines(html),True,True); 
-	deb('length of html',str(len(html))); #debob(html); 
 	if len(html)==0: eod(); return
 	if "<title>Offline for Maintenance</title>" in html: debob("Offline for Maintenance"); eod(); return
 	html=html.replace('\\n','').replace('\n','').replace('\r','').replace('\a','').replace('\t','').replace("\\'","'").replace('\\"','"').replace('\\/','/')
+	deb('length of html',str(len(html))); #debob(html); 
 	if TyPE=='xml':
 		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
 	elif TyPE=='js':
-		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
+		#s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
+		s="<a class='js-already-loaded-channel(?:\s+\D+)?' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></a'; 
 	elif TyPE=='js|featured':
 		s="<div class='homeChannelsFeatured-\d+' data-roomSlug='(.*?)'><div id='(homeChannelsFeaturedTextLabel)'>(Featured)</div><h2 id='(homeChannelsFeaturedTextChannelName)'>"+'<a href="(.+?)">(.+?)</a'; 
 	elif TyPE=='html':
-		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
-		#s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'><div class='homeChannelText'>(.*?)</div>"+"(?:<div class='homeChannelLive'>(.*?)</div>)?"+"<div class='homeChannelTitle'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
+		#s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
+		s="<a class='js-already-loaded-channel(?:\s+\D+)?' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></a'; 
+		##s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'><div class='homeChannelText'>(.*?)</div>"+"(?:<div class='homeChannelLive'>(.*?)</div>)?"+"<div class='homeChannelTitle'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
 		if 'users.js' in Url: 
 			TyPE='html|user'; 
-			#s="<a href='(.+?)'><div class='homePerson(?: homePerson\d+)?'><div class='homePersonText'>(.*?)</div><div class='homePersonUsername'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></div></a'; 
-			s="<a href='(.+?)'><div class='homePerson(?: homePerson\d+)?'><div class='(homePerson(?:Username|Text)?)'>(.*?)</div><div class='(homePerson(?:Username|Text)?)'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></div></a'; 
+			##s="<a href='(.+?)'><div class='homePerson(?: homePerson\d+)?'><div class='homePersonText'>(.*?)</div><div class='homePersonUsername'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></div></a'; 
+			#s="<a href='(.+?)'><div class='homePerson(?: homePerson\d+)?'><div class='(homePerson(?:Username|Text)?)'>(.*?)</div><div class='(homePerson(?:Username|Text)?)'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></div></a'; 
+			s="<a class='homePerson' href='(.+?)'><div class='(homePerson(?:Username|Text)?)'>(.*?)</div><div class='(homePerson(?:Username|Text)?)'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></a'; 
 	elif TyPE=='html|user':
-		s="<a href='(.+?)'><div class='homePerson(?: homePerson\d+)?'><div class='(homePerson(?:Username|Text)?)'>(.*?)</div><div class='(homePerson(?:Username|Text)?)'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></div></a'; 
+		#s="<a href='(.+?)'><div class='homePerson(?: homePerson\d+)?'><div class='(homePerson(?:Username|Text)?)'>(.*?)</div><div class='(homePerson(?:Username|Text)?)'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></div></a'; 
+		s="<a class='homePerson' href='(.+?)'><div class='(homePerson(?:Username|Text)?)'>(.*?)</div><div class='(homePerson(?:Username|Text)?)'>(.*?)</div>"+'<img alt="(.*?)" class="js-user-avatar-image" onerror=".*?" src="(.*?)" /></a'; 
 	else: return
 	html=html.replace('</a>','</a\n>'); ListOfIds=[]; 
 	ListOfIds=IdsList
-	debob(html); 
+	#debob(html); 
 	try: matches=re.compile(s).findall(html); deb('# of matches found',str(len(matches))); debob(matches)
 	except: matches=''; 
 	if len(matches) > 0:
