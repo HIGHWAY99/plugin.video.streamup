@@ -226,6 +226,7 @@ def psgn(x,t=".png"):
 ### ############################################################################################################
 ### ############################################################################################################
 def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe='',streamUrl='',streamkey='',youtubekey='',sourcetype='show'):
+	debob({'pageUrl':pageUrl,'Name':Name,'Thumb':Thumb,'roomId':roomId,'roomSlug':roomSlug,'plot':plot,'liVe':liVe,'streamUrl':streamUrl,'streamkey':streamkey,'youtubekey':youtubekey,'sourcetype':sourcetype})
 	PlayerMethod=addst("core-player"); url=''; print "--DO A PLAYER SPLIT HERE--"; debob(['pageUrl',pageUrl,'Name',Name,'Thumb',Thumb,'roomId',roomId,'roomSlug',roomSlug,'plot',plot,'liVe',liVe,'streamUrl',streamUrl]); fimg=''; 
 	tempParams=_addon.queries; debob(['tempParams',tempParams]); 
 	if   (PlayerMethod=='DVDPLAYER'): PlayerMeth=xbmc.PLAYER_CORE_DVDPLAYER
@@ -244,10 +245,26 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 	#	except: pass
 	#return
 	## ### ## 
+	### http://live.streamup.com:1935/app/%s-channel/playlist.m3u8
 	if len(streamUrl) > 10: url=streamUrl
+	#elif len(roomSlug) > 0: 
+	#	url='http://live.streamup.com:1935/app/%s/playlist.m3u8'%roomSlug
 	else: 
 		if pageUrl.startswith('/'): pageUrl=mainSite2+pageUrl
+		UA=ps('Ipad-User-Agent')
+		html=messupText(nolines(nURL(pageUrl,User_Agent=UA)),True,True); 
+		#debob(html)
+		if '<video' in html:
+			try:    url=re.compile('<video.*? src="([^"]+)"').findall(html)[0]
+			except: url=''
+		
+	if len(url)==0:
+		eod(); return
+		if pageUrl.startswith('/'): pageUrl=mainSite2+pageUrl
 		deb('pageUrl',pageUrl); 
+		#UA=ps('Ipad-User-Agent')
+		#html=messupText(nolines(nURL(pageUrl,User_Agent=UA)),True,True); 
+		#debob(html)
 		html=messupText(nolines(nURL(pageUrl)),True,True); 
 		if len(roomId)==0:
 			try:    roomId=re.compile("flashvars.roomId\s*=\s*'(.+?)';").findall(html)[0]
@@ -263,50 +280,51 @@ def PlayStreamUP(pageUrl='',Name='',Thumb='',roomId='',roomSlug='',plot='',liVe=
 			except: Name='Unknown'
 		try: fimg=re.compile("<div class='channelBgImageTiling' id='channelBgImage' style=\"background-image: url\('(.+?)'\);\">").findall(html)[0]
 		except: fimg=''
-		## ### ## 
-		## ### ## 
-		## ### ## 
-		NeedToToggleDebug=False; NeedToToggleDebug=True; 
-		if (len(url)==0) and (len(streamUrl)==0) and (len(streamkey)==0) and (len(youtubekey)==0):
-				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug On ##
-				url='rtmp://%s/%s timeout=5' % ('66.55.92.79',roomId)
-				#url='rtmp://%s/%s timeout=9' % ('66.55.92.79',roomId)
-				#url='rtmp://%s/%s' % ('66.55.92.79',roomId)
-				play.play(url)
-				#xbmc.sleep(3000*4)
-				xbmc.sleep(3000)
-				try: play.stop()
-				except: pass
-				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug Off ##
-				xbmcLogData=common._OpenFile(xbmcLogFile)
-				if "--DO A PLAYER SPLIT HERE--" in xbmcLogData: xbmcLogData=xbmcLogData.split("--DO A PLAYER SPLIT HERE--")[-1]
-				deb("test file",TPapp("-- player-test.txt")); 
-				common._SaveFile(TPapp("-- player-test.txt"),xbmcLogData); 
-				if "NetStream.Play.StreamNotFound" in xbmcLogData: deb("stream problem","could not find a stream."); 
-				elif "STRING:	Failed to play ; stream not found." in xbmcLogData: deb("stream problem","failed to play, stream not found."); 
-				try: sourcetype=re.compile('STRING:	{"message":"(.+?)"').findall(xbmcLogData)[-1]
-				except: debob("no message found"); return
-				deb("sourcetype",str(sourcetype));
-				if (sourcetype.lower()=='startyoutubemode'): 
-						debob('fetching youtubekey'); 
-						try: youtubekey=re.compile('"message":"startYoutubeMode",.*"videoID":"(.+?)"').findall(xbmcLogData)[-1]
-						except: debob("no youtubekey found"); return
-						deb("youtubekey",youtubekey); 
-				if (sourcetype.lower()=='startshowmode'):
-						#try: streamkey=re.compile('INFO:\s+Property:\s+<Name:\s+.*?,\s+STRING:\s+{"message":"startShowMode","name":".*?","active":\D*,"streamKey":"([0-9A-Za-z]+)","uuid":".*?","type":"\D*"}>').findall(xbmcLogData)[-1]
-						#try: streamkey=re.compile('"message":"startShowMode",.*"streamKey":"([0-9A-Za-z]+)"').findall(xbmcLogData)[-1]
-						try: streamkey=re.compile('"message":"startShowMode",.*"streamKey":"(.+?)"').findall(xbmcLogData)[-1]
-						except: pass
-						deb('streamkey',streamkey); 
-		if (sourcetype.lower()=='youtube') or (sourcetype.lower()=='startyoutubemode'):
-				deb("youtubekey",youtubekey); 
-				url='plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid=%s' % (youtubekey)
-				#url = 'plugin://plugin.video.youtube/?action=play_video&videoid=%s' % youtubekey
-		elif (sourcetype.lower()=='') or (sourcetype.lower()=='auto') or (sourcetype.lower()=='show') or (sourcetype.lower()=='streamup') or (sourcetype.lower()=='rtmp') or (sourcetype.lower()=='startshowmode'):
-				deb('streamkey',streamkey); 
-				url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
-		else: debob("unknown sourcetype and not enough info available."); return
-		## ### ## 
+		if len(roomSlug) > 0: url='http://live.streamup.com:1935/app/%s/playlist.m3u8'%roomSlug
+#		## ### ## 
+#		## ### ## 
+#		## ### ## 
+#		NeedToToggleDebug=False; NeedToToggleDebug=True; 
+#		if (len(url)==0) and (len(streamUrl)==0) and (len(streamkey)==0) and (len(youtubekey)==0):
+#				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug On ##
+#				url='rtmp://%s/%s timeout=5' % ('66.55.92.79',roomId)
+#				#url='rtmp://%s/%s timeout=9' % ('66.55.92.79',roomId)
+#				#url='rtmp://%s/%s' % ('66.55.92.79',roomId)
+#				play.play(url)
+#				#xbmc.sleep(3000*4)
+#				xbmc.sleep(3000)
+#				try: play.stop()
+#				except: pass
+#				if NeedToToggleDebug==True: DoTD(); ## ToggleDebug Off ##
+#				xbmcLogData=common._OpenFile(xbmcLogFile)
+#				if "--DO A PLAYER SPLIT HERE--" in xbmcLogData: xbmcLogData=xbmcLogData.split("--DO A PLAYER SPLIT HERE--")[-1]
+#				deb("test file",TPapp("-- player-test.txt")); 
+#				common._SaveFile(TPapp("-- player-test.txt"),xbmcLogData); 
+#				if "NetStream.Play.StreamNotFound" in xbmcLogData: deb("stream problem","could not find a stream."); 
+#				elif "STRING:	Failed to play ; stream not found." in xbmcLogData: deb("stream problem","failed to play, stream not found."); 
+#				try: sourcetype=re.compile('STRING:	{"message":"(.+?)"').findall(xbmcLogData)[-1]
+#				except: debob("no message found"); return
+#				deb("sourcetype",str(sourcetype));
+#				if (sourcetype.lower()=='startyoutubemode'): 
+#						debob('fetching youtubekey'); 
+#						try: youtubekey=re.compile('"message":"startYoutubeMode",.*"videoID":"(.+?)"').findall(xbmcLogData)[-1]
+#						except: debob("no youtubekey found"); return
+#						deb("youtubekey",youtubekey); 
+#				if (sourcetype.lower()=='startshowmode'):
+#						#try: streamkey=re.compile('INFO:\s+Property:\s+<Name:\s+.*?,\s+STRING:\s+{"message":"startShowMode","name":".*?","active":\D*,"streamKey":"([0-9A-Za-z]+)","uuid":".*?","type":"\D*"}>').findall(xbmcLogData)[-1]
+#						#try: streamkey=re.compile('"message":"startShowMode",.*"streamKey":"([0-9A-Za-z]+)"').findall(xbmcLogData)[-1]
+#						try: streamkey=re.compile('"message":"startShowMode",.*"streamKey":"(.+?)"').findall(xbmcLogData)[-1]
+#						except: pass
+#						deb('streamkey',streamkey); 
+#		if (sourcetype.lower()=='youtube') or (sourcetype.lower()=='startyoutubemode'):
+#				deb("youtubekey",youtubekey); 
+#				url='plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid=%s' % (youtubekey)
+#				#url = 'plugin://plugin.video.youtube/?action=play_video&videoid=%s' % youtubekey
+#		elif (sourcetype.lower()=='') or (sourcetype.lower()=='auto') or (sourcetype.lower()=='show') or (sourcetype.lower()=='streamup') or (sourcetype.lower()=='rtmp') or (sourcetype.lower()=='startshowmode'):
+#				deb('streamkey',streamkey); 
+#				url='rtmp://%s/%s/%s' % ('66.55.92.79',roomId,streamkey)
+#		else: debob("unknown sourcetype and not enough info available."); return
+#		## ### ## 
 		sDB=[]; 
 		#'pageurl, title, streamtype, live, thumb, fanart, roomid, roomslug, sourcetype, streamurl, streamkey, 
 		#youtubeposition, youtubecurrentindex, youtubeduration, youtubeplaylistcount, youtubevideoid, youtubeuuid, 
@@ -472,8 +490,14 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 	if TyPE=='xml':
 		s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
 	elif TyPE=='js':
-		#s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
-		s="<a class='js-already-loaded-channel(?:\s+\D+)?' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></a'; 
+		##s="<a class='js-already-loaded-channel' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"<div class='.*?'>(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></div></a'; 
+		#s="<a class='js-already-loaded-channel(?:\s+\D+)?' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"+"(?:<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>)?"+"<div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div><div class='(homeChannel(?:Live|Title|Text)?)'>(.*?)</div>"+'<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></a'; 
+		s="<a class='js-already-loaded-channel(?:\s+\D+)?' data-room-id='(.*?)' data-room-slug='(.*?)' href='(.+?)'>"
+		s+="(?:<div class='(homeChannel(?:Live|Title|Text|Username|Play|)?)'>(.*?)</div>)?"
+		s+="<div class='(homeChannel(?:Live|Title|Text|Username|Play|)?)'>(.*?)</div>"
+		s+="<div class='(homeChannel(?:Live|Title|Text|Username|Play|)?)'>(.*?)</div>"
+		s+='<img alt="(.*?)(?: (\d+))?" onerror=".*?" src="(.*?)" /></a'; 
+		#s+="(?:</div>)?"
 	elif TyPE=='js|featured':
 		s="<div class='homeChannelsFeatured-\d+' data-roomSlug='(.*?)'><div id='(homeChannelsFeaturedTextLabel)'>(Featured)</div><h2 id='(homeChannelsFeaturedTextChannelName)'>"+'<a href="(.+?)">(.+?)</a'; 
 	elif TyPE=='html':
@@ -521,6 +545,7 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 					if (len(name)==0) and (match[nb]=='homeChannelTitle') and (len(match[nc]) > 0): name=match[nc]
 					if (len(liVe)==0) and (match[nb]=='homeChannelLive') and (len(match[nc]) > 0): liVe=match[nc]
 					if (len(plot)==0) and (match[nb]=='homeChannelText') and (len(match[nc]) > 0): plot=match[nc]
+				if (len(name)==0) and (len(match[1]) > 0): name=match[1]
 				#debob(['url',url,'name',name,'img',img,'liVe',liVe,'plot',plot])
 				#(homeChannel(?:Live|Title|Text)?)
 			#debob(['url',url,'name',name,'img',img])
@@ -546,7 +571,8 @@ def ListShows(Url,Page='',TyPE='js',idList='[]', csrfToken=''):
 			try: cMI=ContextMenu_LiveStreams(Clabs); 
 			except: pass
 			debob(['pars',pars,'labs',labs]); 
-			try: _addon.add_directory(pars,labs,is_folder=is_folder,fanart=fimg,img=img,contextmenu_items=cMI,total_items=iC,context_replace=False)
+			#try: _addon.add_directory(pars,labs,is_folder=is_folder,fanart=fimg,img=img,contextmenu_items=cMI,total_items=iC,context_replace=False)
+			try: _addon.add_video_item(pars,labs,fanart=fimg,img=img,contextmenu_items=cMI,total_items=iC,context_replace=False)
 			except: pass
 			## ### ## 
 			if is_folder==False:
@@ -686,7 +712,7 @@ def SectionMenu():
 	#splash.do_My_Splash(HowLong=5,resize=False); 
 	SpecialCODE=addst('special-code',''); LocalLists=[]; 
 	_addon.add_directory({'mode':'BrowseMenu','site':site},{'title':AFColoring('Browse')},is_folder=True,fanart=fanartSite,img=psgn('browse'))
-	_addon.add_directory({'mode':'BrowseCat2','site':site,'cat':'rooms','type':'js|featured'},{'title':AFColoring('Featured')},is_folder=True,fanart=fanartSite,img=psgn('browse featured'))
+	#_addon.add_directory({'mode':'BrowseCat2','site':site,'cat':'rooms','type':'js|featured'},{'title':AFColoring('Featured')},is_folder=True,fanart=fanartSite,img=psgn('browse featured'))
 	_addon.add_directory({'mode':'SpecialMenu','url':'http://raw.github.com/HIGHWAY99/plugin.video.streamup/master/lists/DevsFeaturedList.txt','site':site},{'title':AFColoring("Dev's Featured List")},is_folder=True,fanart=fanartSite,img=psgn('browse devs featured'))
 	
 	LocalLists.append(['MyPicksList.txt','My Picks List','browse my picks list'])

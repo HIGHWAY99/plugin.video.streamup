@@ -64,7 +64,10 @@ _artPath		=xbmc.translatePath(os.path.join(_addonPath,ps('_addon_path_art')))
 _datapath 	=xbmc.translatePath(_addon.get_profile()); 
 _artIcon		=_addon.get_icon(); 
 _artFanart	=_addon.get_fanart()
-xbmcLogFile =xbmc.translatePath(os.path.join('special://logpath','xbmc.log'))
+def isPath(path): return os.path.exists(path)
+def isFile(filename): return os.path.isfile(filename)
+xbmcLogFile =xbmc.translatePath(os.path.join('special://logpath','kodi.log'))
+if isFile(xbmcLogFile)==False: xbmcLogFile =xbmc.translatePath(os.path.join('special://logpath','xbmc.log'))
 ##### Important Functions with some dependencies #####
 def dPath(s,fe=''): return xbmc.translatePath(os.path.join(_datapath,s+fe))
 CookFile=dPath('StreamupCookie.txt'); 
@@ -111,8 +114,6 @@ def nolines(t):
 	for L in it: t=t+L
 	t=((t.replace("\r","")).replace("\n",""))
 	return t
-def isPath(path): return os.path.exists(path)
-def isFile(filename): return os.path.isfile(filename)
 def getFileExtension(filename):
 	ext_pos = filename.rfind('.')
 	if ext_pos != -1: return filename[ext_pos+1:]

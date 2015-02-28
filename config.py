@@ -65,6 +65,7 @@ def ps(x):
 			,'default_art_ext': 		'.png'
 			,'default_cFL_color': 	'cornflowerblue'
 			,'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
+			,'Ipad-User-Agent': 'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25'
 			,'cMI.showinfo.url': 							'XBMC.Action(Info)'
 			,'cMI.jDownloader.addlink.url':		'XBMC.RunPlugin(plugin://plugin.program.jdownloader/?action=addlink&url=%s)'
 			,'filemarker': ''
